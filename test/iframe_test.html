@@ -1,9 +1,7 @@
-<iframe height="90" scrolling="no" frameborder="0" allowtransparency="true" class="adunit" width="728" loadstatus="1" data-width="728" data-height="90" style="height:190px !important;width:100% !important;overflow:hidden;bottom:0;border:0;position:relative;background:transparent;z-index: 2;max-width:initial !important;" data-dimensions="728x90">
-  <html>
-    <head>
-    </head>
-    <body>
-     <h1>Hello</h1>
-    </body>
-  </html>
-</iframe>
+<iframe id="FileFrame" src="about:blank"></iframe>
+<script type="text/javascript">
+var doc = document.getElementById('FileFrame').contentWindow.document;
+doc.open();
+doc.write('<html><head><title></title></head><body>Hello world.</body></html>');
+doc.close();
+</script>
