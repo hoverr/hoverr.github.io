@@ -130,7 +130,7 @@
     else return true;
   },
 
-	bindClickEvent = function(container){
+	bindClickEvent = function(container, meta){
     var adUnit = '$'+ ((window.location != window.parent.location) ? document.referrer : document.location.href) +' : *Click';
 
     if(meta.is_intertitial){
