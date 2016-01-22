@@ -135,21 +135,23 @@
 
     if(meta.is_intertitial){
       container.find('.slide').click(function () {
+        var slide = $(this);
+        console.log(slide);
         changeContainerHeight(function(status){
-          var slide = $(this);
+          console.log(slide);
           pushEvent({
               clickAction: '#'+ gaData.campaignId +' : ~Unit Click : @'+ slide.attr('data-dress-type') +' : ^'+ ((parseInt(slide.attr('data-gender')) == 0) ? 'Woman' : 'Man'),
               clickCategory: adUnit + 'Click',
               clickLabel: '@'+ slide.attr('data-al') +' : '+ isTranslated() +'$Mobile'
           });
-
+          console.log(slide);
           var $prdctContainer = container.find('#_productContainer'),
               $heading = $prdctContainer.find('.company'),
               $imageListContainer = $prdctContainer.find('div._imageContainerMain'),
               $productName = $prdctContainer.find('._productName'),
               $price = $prdctContainer.find('._price'),
               $buyNow = $prdctContainer.find('._buy_now'),
-              $this = $(this),
+              $this = slide,
               $otherProduct = $this.parent().find('.slide').not($this),
               $html = '<div class="swiper-container"><ul class="_image-list swiper-wrapper">',
               $imgheight = (window.innerHeight - 176) + 'px',
