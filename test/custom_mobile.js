@@ -96,8 +96,9 @@
 
   changeContainerHeight = function(callback){
 		try{
-				var	parentIframeDocument = window.frameElement.ownerDocument,
-					parentIframe = parentIframeDocument.defaultView.frameElement;
+				// var	parentIframeDocument = window.frameElement.ownerDocument,
+				// 	parentIframe = parentIframeDocument.defaultView.frameElement;
+        var parentIframe = window.frameElement;
 				parentIframe.setAttribute('loaded', 'true');
 
         parentIframe.style.height = window.top.innerHeight+ 'px';
@@ -123,11 +124,15 @@
 	},
 
   fixContainerHeight = function(callback){
-    var	parentIframeDocument = window.frameElement.ownerDocument,
-      parentIframe = parentIframeDocument.defaultView.frameElement;
-    parentIframe.style.cssText = parentIframe.getAttribute('data-style');
-    if(typeof(callback) === "function" && callback !== undefined) callback(true);
-    else return true;
+    try{
+      // var	parentIframeDocument = window.frameElement.ownerDocument,
+      //   parentIframe = parentIframeDocument.defaultView.frameElement;
+      var parentIframe = window.frameElement;
+      parentIframe.style.cssText = parentIframe.getAttribute('data-style');
+      if(typeof(callback) === "function" && callback !== undefined) callback(true);
+      else return true;
+    }
+    catch(e){ Debugger.log(e);}
   },
 
 	bindClickEvent = function(container, meta){
