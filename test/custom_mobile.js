@@ -275,10 +275,9 @@
 
                     if(hiddenContainer.length != productContainer.length) {
                         productContainer.addClass('hidden');
-                        var adUnit = '$'+ ((window.location != window.parent.location) ? document.referrer : document.location.href) +' : *Back Button',
-                            atfOrBtf = (parseInt(container.attr('data-atf')) == 1) ? 'ATF' : 'BTF';
+                        var adUnit = '$'+ ((window.location != window.parent.location) ? document.referrer : document.location.href) +' : *Back Button';
                         pushEvent({
-                            clickAction: '#'+ gaData.campaignId +' : ~Close Popup : $'+ atfOrBtf,
+                            clickAction: '#'+ gaData.campaignId +' : ~Close Popup',
                             clickCategory: adUnit + 'Back',
                             clickLabel: isTranslated() + '$Mobile'
                         });
