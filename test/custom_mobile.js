@@ -275,7 +275,7 @@
 
                     if(hiddenContainer.length != productContainer.length) {
                         productContainer.addClass('hidden');
-                        var adUnit = '$'+ container.attr('data-r') +' : ~'+ container.attr('data-iu') +' : @'+ container.attr('data-s') +' : *',
+                        var adUnit = '$'+ ((window.location != window.parent.location) ? document.referrer : document.location.href) +' : *Back Button',
                             atfOrBtf = (parseInt(container.attr('data-atf')) == 1) ? 'ATF' : 'BTF';
                         pushEvent({
                             clickAction: '#'+ gaData.campaignId +' : ~Close Popup : $'+ atfOrBtf,
