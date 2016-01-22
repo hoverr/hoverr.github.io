@@ -1,14 +1,14 @@
 /*
  Version : 0.0.1
- Created On : 06.01.2015
- Last Edited : 06.01.2015
+ Created On : 23.01.2015
+ Last Edited : 23.01.2015
 */
 (function() {
 	var data = (window.pm_ip !== undefined) ? window.pm_ip.data : undefined,
 		container = (window.pm_ip !== undefined) ? window.pm_ip.container : undefined,
 		clickLink = (window.pm_ip !== undefined) ? window.pm_ip.clickLink : undefined,
 		gaData = (window._gaObject !== undefined) ? window._gaObject : {},
-		debugRequired = true,
+		debugRequired = firstTimeChange = true,
 		$,
     PM_IP_DL,
     touchSwipe = '//d3clqjla00sltp.cloudfront.net/swiper.min.js',
@@ -83,7 +83,7 @@
     return ($html.hasClass('translated-ltr') || $html.hasClass('translated-rtl')) ? "_Translated : " : "";
 	},
 
-	pushEvent = function(dataObject){
+	pushEvent = function(dataObject, meta){
 			var tempObject = {};
 			tempObject.event = gaData.event.eventTrigger;
 			tempObject[gaData.event.eventAction] = dataObject.clickAction;
@@ -94,174 +94,203 @@
 			PM_IP_DL.push(tempObject);
 	},
 
-	bindClickEvent = function(container){
-    var adUnit = '$'+ ((window.location != window.parent.location) ? document.referrer : document.location.href) +' : *Click';
-
-    container.find('.slide').click(function () {
-      var slide = $(this),
-          gender = (parseInt(slide.attr('data-gender')) == 0) ? 'Woman' : 'Man',
-          dressType = slide.attr('data-dress-type'),
-          link = slide.attr('data-al');
-
-      pushEvent({
-          clickAction: '#'+ gaData.campaignId +' : ~Unit Click : @'+ dressType +' : ^'+ gender,
-          clickCategory: adUnit + 'Click',
-          clickLabel: '@'+ link +' : '+ isTranslated() +'$Mobile'
-      });
-
-      var $prdctContainer = container.find('#_productContainer'),
-          $heading = $prdctContainer.find('.company'),
-          $imageListContainer = $prdctContainer.find('div._imageContainerMain'),
-          $productName = $prdctContainer.find('._productName'),
-          $price = $prdctContainer.find('._price'),
-          $buyNow = $prdctContainer.find('._buy_now'),
-          $this = $(this),
-          $otherProduct = $this.parent().find('.slide').not($this),
-          $html = '<div class="swiper-container"><ul class="_image-list swiper-wrapper">',
-          $imgheight = (window.innerHeight - 176) + 'px',
-          imagePath = '';
-
-        $html += '<li class="swiper-slide" ';
-        Array.prototype.slice.call($this[0].attributes).forEach(function (item) {
-            if (item.name.indexOf('data-') !== -1) {
-                $html += item.name + '="' + item.value + '" ';
-                if (item.name == 'data-image-path') imagePath = item.value;
-            }
-        });
-        $html += '><img src="' + imagePath + '" class="_bigProductImage" style="max-height:' + $imgheight + '"></li>';
-
-        for (var i = 0; i < $otherProduct.length; i++) {
-            var element = $($otherProduct[i]), obj = element[0].attributes;
-            $html += '<li class="swiper-slide" ';
-            Array.prototype.slice.call(obj).forEach(function (item) {
-                if (item.name.indexOf('data-') !== -1) {
-                    $html += item.name + '="' + item.value + '" ';
-                    if (item.name == 'data-image-path') imagePath = item.value;
-                }
-            });
-            $html += '><img src="' + imagePath + '" class="_bigProductImage" style="height:' + $imgheight + '"></li>'
-        }
-        $html += '</ul></div>';
-        $imageListContainer.html($html);
-        $heading.text($this.attr('data-brand'));
-        //$image.css({'height': (window.innerHeight - 156)+'px'}).attr('src', $this.attr('data-image-path'));
-        $productName.text($this.attr('data-product-name'));
-        $price.text('Rs. ' + $this.attr('data-price'));
-        $buyNow.attr('href', $this.attr('data-link'));
-        $prdctContainer.removeClass('hidden');
-
-        // Binding swipe handler
-        new Swiper($prdctContainer.find('.swiper-container'), {
-            slidesPerView: 1,
-            //spaceBetween: 1,
-            centeredSlides: true,
-            loop: true,
-            //initialSlide: 0,
-            onSlideChangeEnd: function (swiper) {
-                var $prdctContainer = container.find('#_productContainer'),
-                    $this = $prdctContainer.find('.swiper-container').find('.swiper-slide-active'),
-                    $heading = $prdctContainer.find('.company'),
-                    $productName = $prdctContainer.find('._productName'),
-                    $price = $prdctContainer.find('._price'),
-                    $buyNow = $prdctContainer.find('._buy_now');
-
-                $heading.text($this.attr('data-brand'));
-                $productName.text($this.attr('data-product-name'));
-                $price.text('Rs. ' + $this.attr('data-price'));
-                $buyNow.attr('href', $this.attr('data-link'));
-
-                var direction = (swiper.snapIndex < swiper.previousIndex) ? 'Right' : 'Left';
-                if(swiper.snapIndex == 1 && swiper.previousIndex == 0){ Debugger.log(swiper.previousIndex); }
-                else{
-                    pushEvent({
-                        'clickAction': '#' + gaData.campaignId + ' : ~Swipe Popup : @' + direction,
-                        'clickCategory': adUnit + 'Swipe',
-                        'clickLabel': isTranslated() + '$Mobile'
-                    });
-                }
-            }
-        });
-
-        $buyNow.click(function(){
-            var activeElement = $prdctContainer.find('.swiper-slide-active');
-            pushEvent({
-                clickAction: '#'+ gaData.campaignId +' : ~Buy Now : @'+ activeElement.attr('data-dress-type') +' : ^'+ ((parseInt(activeElement.attr('data-gender')) == 0) ? 'Woman' : 'Man'),
-                clickCategory: adUnit + 'Click',
-                clickLabel: '@'+ activeElement.attr('data-al') +' : '+ isTranslated() +'$Mobile'
-            });
-        });
-
-        container.find('a._like').click(function(e){
-            var activeElement = $prdctContainer.find('.swiper-slide-active');
-            pushEvent({
-                clickAction: '#'+ gaData.campaignId +' : ~Like Click: @'+ activeElement.attr('data-dress-type') +' : ^'+ ((parseInt(activeElement.attr('data-gender')) == 0) ? 'Woman' : 'Man'),
-                clickCategory: adUnit + 'Click',
-                clickLabel: '@'+ activeElement.attr('data-amazon-link') +' : '+ isTranslated() +'$Mobile'
-            });
-        });
-
-        // Back button event bind
-        container.find('#_productContainer .back').click(function(){
-            pushEvent({
-                clickAction: '#'+ gaData.campaignId +' : ~Close Popup',
-                clickCategory: adUnit + 'Click',
-                clickLabel: isTranslated() + '$Mobile'
-            });
-            container.find('#_productContainer').addClass('hidden');
-
-            if (window.history && window.history.pushState) {
-                window.history.pushState('', '', window.location.pathname);
-                $firstTimeChange = false;
-                $(window).unbind('hashchange');
-            } else {
-                window.location.href = window.location.href.replace(/#.*$/, '#');
-                $firstTimeChange = false;
-                $(window).unbind('hashchange');
-            }
-        });
-
-        // Binding hash change event
-        $(window).bind('hashchange', function(event) {
-          console.log(1);
-            // if($firstTimeChange){
-            //     var hiddenContainer = $('._productContainer.hidden'),
-            //         productContainer = $('._productContainer'),
-            //         container = productContainer.not(hiddenContainer).eq(0).closest('._processedImageAd');
-            //
-            //     if(hiddenContainer.length != productContainer.length) {
-            //         productContainer.addClass('hidden');
-            //         var adUnit = '$'+ container.attr('data-r') +' : ~'+ container.attr('data-iu') +' : @'+ container.attr('data-s') +' : *',
-            //             atfOrBtf = (parseInt(container.attr('data-atf')) == 1) ? 'ATF' : 'BTF';
-            //         pushEvent({
-            //             clickAction: '#'+ gaData.campaignId +' : ~Close Popup : $'+ atfOrBtf,
-            //             clickCategory: adUnit + 'Back',
-            //             clickLabel: isTranslated() + '$Mobile'
-            //         });
-            //         $firstTimeChange = false;
-            //         $(window).unbind('hashchange');
-            //     }
-            // }
-            // else $firstTimeChange = true;
-        });
-    });
-	},
-
-	changeContainerHeight = function(callback){
+  changeContainerHeight = function(callback){
 		try{
 				var	parentIframeDocument = window.frameElement.ownerDocument,
 					parentIframe = parentIframeDocument.defaultView.frameElement;
 				parentIframe.setAttribute('loaded', 'true');
 
-				var style = document.createElement('style'),
-						css = 'body iframe{height:100%;}';
-				style.type = 'text/css';
-				if (style.styleSheet) style.styleSheet.cssText = css;
-				else style.appendChild(document.createTextNode(css));
-				parentIframeDocument.head.appendChild(style);
+        parentIframe.style.height = window.top.innerHeight+ 'px';
+        parentIframe.style.width = window.top.innerWidth+ 'px';
+        parentIframe.style.position = 'absolute';
+
+        parentIframe.style.webkitTransform = "scale(1)";
+				parentIframe.style.MozTransform = "scale(1)";
+				parentIframe.style.msTransform = "scale(1)";
+				parentIframe.style.OTransform = "scale(1)";
+				parentIframe.style.transform = "scale(1)";
+
+				// var style = document.createElement('style'),
+				// 		css = 'body iframe{height:100%;}';
+				// style.type = 'text/css';
+				// if (style.styleSheet) style.styleSheet.cssText = css;
+				// else style.appendChild(document.createTextNode(css));
+				// parentIframeDocument.head.appendChild(style);
 		}
 		catch(e){ Debugger.log(e); }
 		if(typeof(callback) === "function" && callback !== undefined) callback(true);
     else return true;
+	},
+
+  fixContainerHeight = function(callback){
+    var	parentIframeDocument = window.frameElement.ownerDocument,
+      parentIframe = parentIframeDocument.defaultView.frameElement;
+    parentIframe.style.cssText = parentIframe.getAttribute('data-style');
+    if(typeof(callback) === "function" && callback !== undefined) callback(true);
+    else return true;
+  },
+
+	bindClickEvent = function(container){
+    var adUnit = '$'+ ((window.location != window.parent.location) ? document.referrer : document.location.href) +' : *Click';
+
+    if(meta.is_intertitial){
+      container.find('.slide').click(function () {
+        changeContainerHeight(function(status){
+          var slide = $(this);
+          pushEvent({
+              clickAction: '#'+ gaData.campaignId +' : ~Unit Click : @'+ slide.attr('data-dress-type') +' : ^'+ ((parseInt(slide.attr('data-gender')) == 0) ? 'Woman' : 'Man'),
+              clickCategory: adUnit + 'Click',
+              clickLabel: '@'+ slide.attr('data-al') +' : '+ isTranslated() +'$Mobile'
+          });
+
+          var $prdctContainer = container.find('#_productContainer'),
+              $heading = $prdctContainer.find('.company'),
+              $imageListContainer = $prdctContainer.find('div._imageContainerMain'),
+              $productName = $prdctContainer.find('._productName'),
+              $price = $prdctContainer.find('._price'),
+              $buyNow = $prdctContainer.find('._buy_now'),
+              $this = $(this),
+              $otherProduct = $this.parent().find('.slide').not($this),
+              $html = '<div class="swiper-container"><ul class="_image-list swiper-wrapper">',
+              $imgheight = (window.innerHeight - 176) + 'px',
+              imagePath = '';
+
+            $html += '<li class="swiper-slide" ';
+            Array.prototype.slice.call($this[0].attributes).forEach(function (item) {
+                if (item.name.indexOf('data-') !== -1) {
+                    $html += item.name + '="' + item.value + '" ';
+                    if (item.name == 'data-image-path') imagePath = item.value;
+                }
+            });
+            $html += '><img src="' + imagePath + '" class="_bigProductImage" style="max-height:' + $imgheight + '"></li>';
+
+            for (var i = 0; i < $otherProduct.length; i++) {
+                var element = $($otherProduct[i]), obj = element[0].attributes;
+                $html += '<li class="swiper-slide" ';
+                Array.prototype.slice.call(obj).forEach(function (item) {
+                    if (item.name.indexOf('data-') !== -1) {
+                        $html += item.name + '="' + item.value + '" ';
+                        if(item.name == 'data-image-path') imagePath = item.value;
+                    }
+                });
+                $html += '><img src="' + imagePath + '" class="_bigProductImage" style="height:' + $imgheight + '"></li>'
+            }
+            $html += '</ul></div>';
+            $imageListContainer.html($html);
+            $heading.text($this.attr('data-brand'));
+            //$image.css({'height': (window.innerHeight - 156)+'px'}).attr('src', $this.attr('data-image-path'));
+            $productName.text($this.attr('data-product-name'));
+            $price.text('Rs. ' + $this.attr('data-price'));
+            $buyNow.attr('href', $this.attr('data-link'));
+            $prdctContainer.removeClass('hidden');
+
+            // Binding swipe handler
+            new Swiper($prdctContainer.find('.swiper-container'), {
+                slidesPerView: 1,
+                //spaceBetween: 1,
+                centeredSlides: true,
+                loop: true,
+                //initialSlide: 0,
+                onSlideChangeEnd: function (swiper) {
+                    var $prdctContainer = container.find('#_productContainer'),
+                        $this = $prdctContainer.find('.swiper-container').find('.swiper-slide-active'),
+                        $heading = $prdctContainer.find('.company'),
+                        $productName = $prdctContainer.find('._productName'),
+                        $price = $prdctContainer.find('._price'),
+                        $buyNow = $prdctContainer.find('._buy_now');
+
+                    $heading.text($this.attr('data-brand'));
+                    $productName.text($this.attr('data-product-name'));
+                    $price.text('Rs. ' + $this.attr('data-price'));
+                    $buyNow.attr('href', $this.attr('data-link'));
+
+                    var direction = (swiper.snapIndex < swiper.previousIndex) ? 'Right' : 'Left';
+                    if(swiper.snapIndex == 1 && swiper.previousIndex == 0){ Debugger.log(swiper.previousIndex); }
+                    else{
+                        pushEvent({
+                            'clickAction': '#' + gaData.campaignId + ' : ~Swipe Popup : @' + direction,
+                            'clickCategory': adUnit + 'Swipe',
+                            'clickLabel': isTranslated() + '$Mobile'
+                        });
+                    }
+                }
+            });
+
+            $buyNow.click(function(){
+                var activeElement = $prdctContainer.find('.swiper-slide-active');
+                pushEvent({
+                    clickAction: '#'+ gaData.campaignId +' : ~Buy Now : @'+ activeElement.attr('data-dress-type') +' : ^'+ ((parseInt(activeElement.attr('data-gender')) == 0) ? 'Woman' : 'Man'),
+                    clickCategory: adUnit + 'Click',
+                    clickLabel: '@'+ activeElement.attr('data-al') +' : '+ isTranslated() +'$Mobile'
+                });
+            });
+
+            container.find('a._like').click(function(e){
+                var activeElement = $prdctContainer.find('.swiper-slide-active');
+                pushEvent({
+                    clickAction: '#'+ gaData.campaignId +' : ~Like Click: @'+ activeElement.attr('data-dress-type') +' : ^'+ ((parseInt(activeElement.attr('data-gender')) == 0) ? 'Woman' : 'Man'),
+                    clickCategory: adUnit + 'Click',
+                    clickLabel: '@'+ activeElement.attr('data-amazon-link') +' : '+ isTranslated() +'$Mobile'
+                });
+            });
+
+            // Back button event bind
+            container.find('#_productContainer .back').click(function(){
+              fixContainerHeight(function(){
+                pushEvent({
+                    clickAction: '#'+ gaData.campaignId +' : ~Close Popup',
+                    clickCategory: adUnit + 'Click',
+                    clickLabel: isTranslated() + '$Mobile'
+                });
+                container.find('#_productContainer').addClass('hidden');
+
+                if (window.history && window.history.pushState) {
+                    window.history.pushState('', '', window.location.pathname);
+                    firstTimeChange = false;
+                    $(window).unbind('hashchange');
+                } else {
+                    window.location.href = window.location.href.replace(/#.*$/, '#');
+                    firstTimeChange = false;
+                    $(window).unbind('hashchange');
+                }
+              });
+            });
+
+            // Binding hash change event
+            $(window).bind('hashchange', function(event) {
+                if(firstTimeChange){
+                    var hiddenContainer = $('._productContainer.hidden'),
+                        productContainer = $('._productContainer'),
+                        container = productContainer.not(hiddenContainer).eq(0).closest('._processedImageAd');
+
+                    if(hiddenContainer.length != productContainer.length) {
+                        productContainer.addClass('hidden');
+                        var adUnit = '$'+ container.attr('data-r') +' : ~'+ container.attr('data-iu') +' : @'+ container.attr('data-s') +' : *',
+                            atfOrBtf = (parseInt(container.attr('data-atf')) == 1) ? 'ATF' : 'BTF';
+                        pushEvent({
+                            clickAction: '#'+ gaData.campaignId +' : ~Close Popup : $'+ atfOrBtf,
+                            clickCategory: adUnit + 'Back',
+                            clickLabel: isTranslated() + '$Mobile'
+                        });
+                        firstTimeChange = false;
+                        $(window).unbind('hashchange');
+                    }
+                }
+                else firstTimeChange = true;
+            });
+        });
+      });
+    }
+    else{
+      container.find('._product_link').click(function(){
+          var activeElement = $(this).closest('.slide');
+          pushEvent({
+              clickAction: '#'+ gaData.campaignId +' : ~Buy Now : @'+ activeElement.attr('data-dress-type') +' : ^'+ ((parseInt(activeElement.attr('data-gender')) == 0) ? 'Woman' : 'Man'),
+              clickCategory: adUnit + 'Click',
+              clickLabel: '@'+ activeElement.attr('data-al') +' : '+ isTranslated() +'$Mobile'
+          });
+      });
+    }
 	},
 
 	createHtml = function(data){
@@ -311,7 +340,7 @@
               });
           }
       });
-      if(gaData.required) bindClickEvent($htmlContainer);
+      if(gaData.required) bindClickEvent($htmlContainer, data.meta);
 	};
 
 	if(data){
