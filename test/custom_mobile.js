@@ -78,7 +78,7 @@
     else return true;
 	},
 
-	typeofMouseClick = function(t) {
+	isTranslated = function(t) {
     var $html = $('html');
     return ($html.hasClass('translated-ltr') || $html.hasClass('translated-rtl')) ? "_Translated : " : "";
 	},
@@ -307,7 +307,7 @@
               pushEvent({
                   'clickAction': '#' + gaData.campaignId + ' : ~Swipe Normal : @' + direction,
                   'clickCategory': '$'+ ((window.location != window.parent.location) ? document.referrer : document.location.href) + 'Swipe',
-                  'clickLabel': typeofMouseClick() + '$Mobile'
+                  'clickLabel': isTranslated() + '$Mobile'
               });
           }
       });
