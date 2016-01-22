@@ -32,6 +32,7 @@
 		"data-width": dfpTag.dimention.width,
 		"data-height": dfpTag.dimention.height,
 		"style": cssText,
+		"data-style": cssText,
 		"data-dimensions": dfpTag.dimention.width+'x'+dfpTag.dimention.height
 	});
   	container.append(iframe);
