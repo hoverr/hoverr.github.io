@@ -5,7 +5,7 @@
     <script type="text/javascript">
     var doc = document.getElementById('parentFrame').contentWindow.document;
     doc.open();
-    doc.write('<html><head><style>body{margin:0;}</style></head><body>Hello parent.<iframe width="728" height="90" id="childFrame" src=\'javascript:"<html><head><style>body{margin:0;}</style></head><body><h3>Hello child.</h3><script>console.log(window.frameElement.ownerDocument.defaultView.frameElement);\x3C/script></body></html>"\'></iframe></body></html>');
+    doc.write('<html><head><style>body{margin:0;}</style></head><body>Hello parent.<iframe width="728" height="90" id="childFrame" src=\'javascript:"<html><head><style>body{margin:0;}</style></head><body><h3>Hello child.</h3><script>console.log(window.frameElement.ownerDocument.defaultView.frameElement);console.log(window.innerHeight);\x3C/script></body></html>"\'></iframe></body></html>');
     doc.close();
     </script>
   </body>
