@@ -9,14 +9,6 @@
   <link href="vast/videojs.vast.css" rel="stylesheet" type="text/css">
 
   <style type="text/css">
-    .description {
-      background-color:#eee;
-      border: 1px solid #777;
-      padding: 10px;
-      font-size: .8em;
-      line-height: 1.5em;
-      font-family: Verdana, sans-serif;
-    }
     .example-video-container {
       display: inline-block;
     }
@@ -28,32 +20,34 @@
   <script src="vast/videojs.vast.js"></script>
 </head>
 <body>
-  <p class="description">Video.js VAST plugin examples.</p>
-
   <div class="example-video-container">
-    <p class="description">No autoplay.</p>
+    <h3>No autoplay.</h3>
 
     <video id="vid1" class="video-js vjs-default-skin" controls preload="auto"
-        poster="vast/black.jpg"
+        poster="http://video-js.zencoder.com/oceans-clip.png"
         data-setup='{}'
         width='640'
         height='400'
         >
-      <source src="vast/onesec.mp4" type='video/mp4'>
+      <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'>
+      <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'>
+      <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'>
       <p>Video Playback Not Supported</p>
     </video>
   </div>
 
   <div class="example-video-container">
-    <p class="description">With autoplay.</p>
+    <h3>With autoplay.</h3>
 
     <video id="vid2" class="video-js vjs-default-skin" autoplay controls preload="auto"
-        poster="vast/black.jpg"
+        poster="http://video-js.zencoder.com/oceans-clip.png"
         data-setup='{}'
         width='640'
         height='400'
         >
-      <source src="vast/onesec.mp4" type='video/mp4'>
+      <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'>
+      <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'>
+      <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'>
       <p>Video Playback Not Supported</p>
     </video>
   </div>
