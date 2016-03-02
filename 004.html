@@ -56,6 +56,7 @@ pbjs.que.push(function() {
   pbjs.requestBids({
     bidsBackHandler: function() {
         // callback when requested bids are all back
+        console.log(pbjs.getBidResponses());
     };
   });
   PREBID_TIMEOUT = 300;
