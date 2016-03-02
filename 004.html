@@ -30,6 +30,36 @@
         });
     });
 </script>
+<script src="prebid.js" async></script>
+
+pbjs.que.push(function() {
+  var adUnits = [{
+    code: "div-gpt-ad-1438287399331-0",
+    sizes: [[300, 250], [728, 90]],
+    bids: [{
+        bidder: "rubicon",
+        params: {
+            rp_account: "4934",
+            rp_site: "13945",
+            rp_zonesize: "23948-15"
+        }
+    }, {
+        bidder: 'sovrn',
+        params: { tagId: '315045' }
+    }, {
+        bidder: "appnexus",
+        params: { placementId: "234235" }
+    }]
+  }];
+  pbjs.addAdUnits(adUnits);
+
+  pbjs.requestBids({
+    bidsBackHandler: function() {
+        // callback when requested bids are all back
+    };
+  });
+
+});
 </head>
 <body>
 </body>
