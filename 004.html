@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="//acdn.adnxs.com/prebid/prebid.js" async></script>
+<script type="text/javascript" src="//acdn.adnxs.com/prebid/prebid.js" async></script>
 <div id="container">Bid Response</div>
 <script>
     var pbjs = pbjs || {};
@@ -18,7 +18,18 @@
             // Add other bidders here
             ]
         }];
-      </script>  
+        pbjs.addAdUnits(adUnits);
+        pbjs.requestBids({
+            // This callback gets triggered when all bids for this
+            // ad unit come back. 
+            bidsBackHandler: function(bidResponses) {
+                var targetingParams = pbjs.getAdserverTargeting();
+                var container = document.getElementById('container');
+                container.innerHTML = JSON.stringify(targetingParams);
+            }
+        });
+    });
+</script>
 </head>
 <body>
 </body>
