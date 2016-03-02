@@ -58,6 +58,17 @@ pbjs.que.push(function() {
         // callback when requested bids are all back
     };
   });
+  PREBID_TIMEOUT = 300;
+function initAdserver() {
+    (function() {
+        // To load GPT Library Async
+    })();
+    pbjs.initAdserverSet = true;
+};
+setTimeout(initAdserver, PREBID_TIMEOUT);
+pbjs.que.push(function() {
+  pbjs.setTargetingForGPTAsync();
+});
 
 });
 </head>
