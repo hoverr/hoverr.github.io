@@ -1,35 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="//acdn.adnxs.com/prebid/prebid.js" async></script>
-<div id="container">Bid Response</div>
-<script>
-    var pbjs = pbjs || {};
-    pbjs.que = pbjs.que || [];
-
-    pbjs.que.push(function() {
-        var adUnits = [{
-            code: 'div-gpt-ad-1438287399331-0',
-            sizes: [[300, 250], [300, 600]],
-            bids: [{
-                bidder: 'appnexus',
-                params: { placementId: '4799418' }
-            }
-            // Add other bidders here
-            ]
-        }];
-        pbjs.addAdUnits(adUnits);
-        pbjs.requestBids({
-            // This callback gets triggered when all bids for this
-            // ad unit come back. 
-            bidsBackHandler: function(bidResponses) {
-                var targetingParams = pbjs.getAdserverTargeting();
-                var container = document.getElementById('container');
-                container.innerHTML = JSON.stringify(targetingParams);
-            }
-        });
-    });
-</script>
+<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=334098&u=varungupta&width=728&height=90"></script>
 </head>
 <body>
 </body>
