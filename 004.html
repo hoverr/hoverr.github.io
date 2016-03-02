@@ -1,7 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    "Hello Varun Gupta"
+    <script>
+        var PREBID_TIMEOUT = 1000;
+    
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        
+        function initAdserver() {
+            if (pbjs.initAdserverSet) return;
+            (function() {
+                var gads = document.createElement('script');
+                gads.async = true;
+                gads.type = 'text/javascript';
+                var useSSL = 'https:' == document.location.protocol;
+                gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+                var node = document.getElementsByTagName('script')[0];
+                node.parentNode.insertBefore(gads, node);
+            })();
+            pbjs.initAdserverSet = true;
+        };
+        setTimeout(initAdserver, PREBID_TIMEOUT);
+    
+        var pbjs = pbjs || {};
+        pbjs.que = pbjs.que || [];
+        (function() {
+            var pbjsEl = document.createElement("script");
+            pbjsEl.type = "text/javascript";
+            pbjsEl.async = true;
+            pbjsEl.src = "//acdn.adnxs.com/prebid/static/0.4.1/prebid.js";
+            var pbjsTargetEl = document.getElementsByTagName("head")[0];
+            pbjsTargetEl.insertBefore(pbjsEl, pbjsTargetEl.firstChild);
+        })();
+    
+        pbjs.que.push(function() {
+            var adUnits = [{
+                code: 'div-gpt-ad-1438287399331-0',
+                sizes: [[300, 250], [300, 600]],
+                bids: [{
+                        bidder: 'appnexus',
+                        params: { placementId: '4799418' }
+                    }, {
+                        bidder: 'pubmatic',
+                        params: {
+                            publisherId: 'TO ADD',
+                            adSlot: 'TO ADD'
+                        }
+                    }]
+            },{
+                code: 'div-gpt-ad-1438287399331-1',
+                sizes: [[728, 90], [970, 90]],
+                bids: [{
+                        bidder: 'appnexus',
+                        params: { placementId: '4799418' }
+                    }]
+            }];
+            pbjs.addAdUnits(adUnits);
+    
+            pbjs.requestBids({
+                bidsBackHandler: function(bidResponses) {
+                    initAdserver();
+                }
+            })
+        });
+    <script>
 </head>
 <body>
 </body>
