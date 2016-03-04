@@ -54,7 +54,7 @@
         http://prebid.org/bidders.html.
 
         code:  Your GPT slot’s ad unit path. If they don’t match, prebid.js 
-               would not be able to set targeting correctly
+               would not be able % set targeting correctly
         sizes: All sizes your ad unit accepts. They should match with GPT.
 
         */
@@ -64,67 +64,11 @@
         bids: [
             // 1 ad unit can be targeted by multiple bids.
             {
-                bidder: 'appnexus',
-                params: {
-                   placementId: 'TO ADD'
-                }
-            }, {
-                bidder: 'pubmatic',
-                params: {
-                    publisherId: 'TO ADD',
-                    adSlot: 'TO ADD@300x250'
-                }
-            }, {
-                bidder: 'pubmatic',
-                params: {
-                    publisherId: 'TO ADD',
-                    adSlot: 'TO ADD@300x600'
-                }
-            },
-            {
-                bidder: 'adform',
-                // available params: [ 'mid', 'inv', 'pdom', 'mname', 'mkw', 'mkv', 'cat', 'bcat', 'bcatrt', 'adv', 'advt', 'cntr', 'cntrt', 'maxp', 'minp', 'sminp', 'w', 'h', 'pb', 'pos', 'cturl', 'iturl', 'cttype', 'hidedomain', 'cdims', 'test' ]
-                params: {
-                    adxDomain: 'adx.adform.net', //optional
-                    mid: 74042,
-                    test: 1
-                }
-            },
-            {
-                bidder: 'yieldbot',
-                params: {
-                    psn: 'TO ADD',
-                    slot: 'TO ADD',
-                }
-            },
-            {
-                bidder: 'sovrn',
-                    params: {
-                        tagid: '123' // <String> tag Id
-                    }
-            },
-            {
                 bidder: 'nginad',
                     params: {
                         pzoneid: '7', // <String> PublisherAdZoneID
                         nginad_domain: "54.254.228.208" // the domain where you installed NginAd, Omit leading http://
                     }
-            },
-            {
-                bidder: 'pulsepoint',
-                params: {
-                        cf: '300X250',
-                        cp: 521732,
-                        ct: 76835
-                }
-            },
-            {
-                bidder: 'springserve',
-                params: {
-                    impId: 1234,
-                    supplyPartnerId: 1,
-                    test: true // only include when testing
-                }
             }
             ]
     },{
