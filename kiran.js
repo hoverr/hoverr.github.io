@@ -21,4 +21,7 @@ var QueryString = function () {
     return query_string;
 }();
 
-console.log(QueryString);
+if(QuerString.hdmode == "undefined")
+  console.log("NORMAL MODE");
+else 
+  console.log("DEMO MODE");
