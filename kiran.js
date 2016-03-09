@@ -23,7 +23,7 @@ var QueryString = function () {
 
 console.log(QueryString.hdmode);
 
-if(QueryString.hdmode == "undefined")
+if(QueryString.hdmode == undefined)
   console.log("NORMAL MODE");
 else 
   console.log("DEMO MODE");
