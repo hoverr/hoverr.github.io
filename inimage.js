@@ -13,6 +13,8 @@
 		$,
 		_window_dataObject = {};
 
+  if(window._pm_object === undefined) window._pm_object = {};
+
 	var Debugger = function () { };
 	Debugger.log = function (message) {
 		try {
