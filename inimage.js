@@ -91,8 +91,13 @@
 			$ = $ || window.jQuery || window.$;
 	
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			console.log(window._pm_object);
+			console.log(window);
+			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window._backup_pm_object);
+			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+			console.log(window._pm_object);
+			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+			
 
 			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
 			else _window_dataObject = window._pm_object.inimage;
