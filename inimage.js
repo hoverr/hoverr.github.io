@@ -96,9 +96,11 @@
 			console.log(abc.inimage);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
-
-			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
-			else _window_dataObject = window._pm_object.inimage;
+			if(window.hoverrneo != undefined) {
+			  _window_dataObject = window.hoverrneo;
+			  if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
+			    else _window_dataObject = window._pm_object.inimage;
+			}
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
