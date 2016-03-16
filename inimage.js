@@ -90,11 +90,11 @@
 		//	$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
 	
-			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			console.log(hoverrneo);
-      //neo = JSON.parse(tmpneo);
+			// console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+			// //console.log(hoverrneo);
+   //    //neo = JSON.parse(tmpneo);
 
-			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+			// console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
 			if(window.hoverrneo != undefined) {
 			  console.log(hoverrneo);
@@ -104,6 +104,10 @@
       } else {
         _window_dataObject = window._pm_object.inimage;
 			}
+
+      console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+      console.log(_window_dataObject);
+      console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
