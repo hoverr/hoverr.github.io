@@ -101,6 +101,9 @@
 			if(window.hoverrneo != undefined) {
 			  console.log(hoverrneo);
 			  _window_dataObject = hoverrneo;
+        window._pm_object.host = hoverrneo.h;
+        window._pm_object.section = hoverrneo.s;
+        window._pm_object.web_or_mobile = hoverrneo.wm;
       } else if(window._pm_object === undefined || window._pm_object.inimage == undefined) {
         return;
       } else {
