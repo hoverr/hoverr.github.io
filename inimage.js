@@ -92,7 +92,7 @@
 	
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window.hoverrneo);
-			var abc = JSON.parse(JSON.parse(window.hoverrneo));
+			var abc = JSON.parse(window.hoverrneo);
 			console.log(abc.inimage);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
