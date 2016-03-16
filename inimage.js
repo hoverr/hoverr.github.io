@@ -69,6 +69,8 @@
 
 		setAttributes(iframe, {"height": $iframeHeight, "scrolling": "no", "frameBorder": 0, "allowtransparency": "true", "class": "_adSenceImagePush", "width": $iframeWidth, "loadStatus": 0, "data-width": $iframeWidth, "data-height": $iframeHeight, "style":$cssText});
 
+    console.log(iframe);
+
 		container.containerDiv.append(iframe);
 
 		try{
