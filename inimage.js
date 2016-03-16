@@ -93,7 +93,6 @@
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window.hoverrneo);
 			var neo = JSON.parse(window.hoverrneo);
-			console.log(abc.inimage);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
 			if(window.hoverrneo != undefined) {
