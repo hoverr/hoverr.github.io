@@ -94,7 +94,7 @@
 			console.log(window);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			var hoverrneo = JSON.parse(sessionStorage.hoverrneo);
-			console.log(hoverrneo);
+			console.log(JSON.parse(window.hoverrneo));
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window._pm_object);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
