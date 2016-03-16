@@ -96,7 +96,8 @@
 			console.log(abc.inimage);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
-			if(window.hoverrneo != undefined) {
+			if(window.hoverrneo !== undefined) {
+			  console.log(neo);
 			  _window_dataObject = neo;
 			  if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
 			    else _window_dataObject = window._pm_object.inimage;
