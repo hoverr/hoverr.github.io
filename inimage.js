@@ -95,8 +95,6 @@
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window.hoverrneo);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			console.log(window._pm_object);
-			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
 
 			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
