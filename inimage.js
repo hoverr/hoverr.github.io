@@ -91,15 +91,14 @@
 			$ = $ || window.jQuery || window.$;
 	
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			console.log(window.hoverrneo);
-      tmpneo = window.hoverrneo.replace('"', '\"');
-      neo = JSON.parse(tmpneo);
+			console.log(hoverrneo);
+      //neo = JSON.parse(tmpneo);
 
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
 			if(window.hoverrneo != undefined) {
-			  console.log(neo);
-			  _window_dataObject = neo;
+			  console.log(hoverrneo);
+			  _window_dataObject = hoverrneo;
       } else if(window._pm_object === undefined || window._pm_object.inimage == undefined) {
         return;
       } else {
