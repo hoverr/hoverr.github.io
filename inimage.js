@@ -86,8 +86,8 @@
 		Debugger.log('Log : Initialize function called !!');
 		// if ($isMobile) return;
 
-		if(!$onceCalled) {
-			$onceCalled = true;
+		//if(!$onceCalled) {
+		//	$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
 	
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
@@ -101,7 +101,7 @@
 					putAd(container[i]);
 				});
 			});
-		}
+		//}
 	};
 
 	// Create script tag with forwarded link and put under the head section and get back to scriptLoadHandler function
