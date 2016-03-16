@@ -92,12 +92,12 @@
 	
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window.hoverrneo);
-			var abc = JSON.parse(window.hoverrneo);
+			var neo = JSON.parse(window.hoverrneo);
 			console.log(abc.inimage);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
 			if(window.hoverrneo != undefined) {
-			  _window_dataObject = window.hoverrneo;
+			  _window_dataObject = neo;
 			  if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
 			    else _window_dataObject = window._pm_object.inimage;
 			}
