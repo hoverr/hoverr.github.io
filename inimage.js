@@ -93,7 +93,7 @@
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			console.log(JSON.parse(window.hoverrneo));
+			console.log(window.hoverrneo);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window._pm_object);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
