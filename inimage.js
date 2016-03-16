@@ -92,7 +92,9 @@
 	
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window.hoverrneo);
-			var neo = window.hoverrneo;
+      tmpneo = window.hoverrneo.replace('"', '\"');
+      neo = JSON.parse(tmpneo);
+
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
 			if(window.hoverrneo != undefined) {
