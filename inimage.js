@@ -91,8 +91,6 @@
 			$ = $ || window.jQuery || window.$;
 	
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			console.log(window);
-			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			console.log(window.hoverrneo);
 			console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 			
