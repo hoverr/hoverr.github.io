@@ -13,8 +13,6 @@
 		$,
 		_window_dataObject = {};
 
-  if(window._pm_object === undefined) window._pm_object = {};
-
 	var Debugger = function () { };
 	Debugger.log = function (message) {
 		try {
@@ -71,8 +69,6 @@
 
 		setAttributes(iframe, {"height": $iframeHeight, "scrolling": "no", "frameBorder": 0, "allowtransparency": "true", "class": "_adSenceImagePush", "width": $iframeWidth, "loadStatus": 0, "data-width": $iframeWidth, "data-height": $iframeHeight, "style":$cssText});
 
-    console.log(iframe);
-
 		container.containerDiv.append(iframe);
 
 		try{
@@ -90,38 +86,19 @@
 		Debugger.log('Log : Initialize function called !!');
 		// if ($isMobile) return;
 
-		//if(!$onceCalled) {
-		//	$onceCalled = true;
+		if(!$onceCalled) {
+			$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
-	
-			// console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			// //console.log(hoverrneo);
-   //    //neo = JSON.parse(tmpneo);
 
-			// console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-			
-			if(window.hoverrneo != undefined) {
-			  console.log(hoverrneo);
-			  _window_dataObject = hoverrneo;
-        window._pm_object.host = hoverrneo.h;
-        window._pm_object.section = hoverrneo.s;
-        window._pm_object.web_or_mobile = hoverrneo.wm;
-      } else if(window._pm_object === undefined || window._pm_object.inimage == undefined) {
-        return;
-      } else {
-        _window_dataObject = window._pm_object.inimage;
-			}
-
-      console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-      console.log(_window_dataObject);
-      console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
+			else _window_dataObject = window._pm_object.inimage;
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
 					putAd(container[i]);
 				});
 			});
-		//}
+		}
 	};
 
 	// Create script tag with forwarded link and put under the head section and get back to scriptLoadHandler function
