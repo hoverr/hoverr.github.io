@@ -98,7 +98,7 @@
 
       var hn = localStorage.getItem("hoverrneo");
 
-      console.log(hn);
+      console.log(JSON.parse(hn));
 
       window.hoverrneo = hn;
 
