@@ -13,7 +13,7 @@
 		$,
 		_window_dataObject = {};
 
-  if(window._pm_object === undefined) window._pm_object = {};
+  if(window.hoverrneo === undefined) window.hoverrneo = {};
 
 	// var Debugger = function () { };
 	// Debugger.log = function (message) {
@@ -64,7 +64,7 @@
 		$cssText,
 		$top,
 		$adTag = _window_dataObject.tag,
-		$key = [window._pm_object.host, window._pm_object.section, window._pm_object.web_or_mobile, _window_dataObject.id, _window_dataObject.is_default],
+		$key = [window.hoverrneo.host, window.hoverrneo.section, window.hoverrneo.web_or_mobile, _window_dataObject.id, _window_dataObject.is_default],
 		$pixelPingHtml = '<img src="http://track.hoverr.media/pixel.gif?key='+ $key.join('|') +'" style="display:none;"/>';
 
 		$cssText = "height:"+ $iframeHeight +"px !important; min-height:"+ $iframeHeight +"px !important; width:"+ $iframeWidth +"px !important; overflow:hidden;"+ $left +"bottom:"+ $bottom +"px;margin:0 auto; position:absolute; background: transparent; z-index: 2; -moz-transform: scale("+ $scale +"); -o-transform: scale("+ $scale +"); -webkit-transform: scale("+ $scale +"); transform: scale("+ $scale +"); max-width:initial !important;";
@@ -94,11 +94,11 @@
 			$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
 
-      console.log(window._pm_object);
+      console.log(window.hoverrneo);
       console.log(window);
 
-			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
-			else _window_dataObject = window._pm_object.inimage;
+			if(window.hoverrneo === undefined || window.hoverrneo.inimage == undefined) return;
+			else _window_dataObject = window.hoverrneo.inimage;
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
