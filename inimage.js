@@ -13,6 +13,8 @@
 		$,
 		_window_dataObject = {};
 
+  if(window._pm_object === undefined) window._pm_object = {};
+
 	// var Debugger = function () { };
 	// Debugger.log = function (message) {
 	// 	try {
@@ -93,7 +95,7 @@
 			$ = $ || window.jQuery || window.$;
 
       console.log(window._pm_object);
-      
+
 			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
 			else _window_dataObject = window._pm_object.inimage;
 
