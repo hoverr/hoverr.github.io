@@ -95,7 +95,12 @@
 			$ = $ || window.jQuery || window.$;
 
       console.log(window.hoverrneo);
-      console.log(window);
+
+      var hn = localStorage.setItem("hoverrneo");
+
+      console.log(hn);
+
+      window.hoverrneo = hn;
 
 			if(window.hoverrneo === undefined || window.hoverrneo.inimage == undefined) return;
 			else _window_dataObject = window.hoverrneo.inimage;
