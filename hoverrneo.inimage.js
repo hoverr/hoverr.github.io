@@ -96,14 +96,14 @@
 
       console.log(window.hoverrneo);
 
-      var hn = localStorage.getItem("hoverrneo");
+      window.hoverrneo = JSON.parse(localStorage.getItem("hoverrneo"));
 
-      console.log(JSON.parse(hn));
-
-      window.hoverrneo = hn;
+      console.log(window.hoverrneo);
 
 			if(window.hoverrneo === undefined || window.hoverrneo.inimage == undefined) return;
 			else _window_dataObject = window.hoverrneo.inimage;
+
+      console.lo
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
