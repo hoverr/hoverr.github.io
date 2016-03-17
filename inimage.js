@@ -13,7 +13,7 @@
 		$,
 		_window_dataObject = {};
 
-  if(window.hoverrneo === undefined) window.hoverrneo = {};
+  // if(window.hoverrneo === undefined) window.hoverrneo = {};
 
 	// var Debugger = function () { };
 	// Debugger.log = function (message) {
