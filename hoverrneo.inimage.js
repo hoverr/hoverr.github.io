@@ -96,7 +96,7 @@
 
       console.log(window.hoverrneo);
 
-      var hn = localStorage.setItem("hoverrneo");
+      var hn = localStorage.getItem("hoverrneo");
 
       console.log(hn);
 
