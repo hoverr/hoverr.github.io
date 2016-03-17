@@ -88,7 +88,7 @@
 		console.log('Log : Initialize function called !!');
 		// if ($isMobile) return;
 
-    console.log($onceCalled);
+    //console.log($onceCalled);
 
 		// if(!$onceCalled) {
 		// 	$onceCalled = true;
