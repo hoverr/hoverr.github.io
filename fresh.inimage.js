@@ -7,20 +7,18 @@
 */
 (function() {
 	var $isMobile = !!((/android|webos|iphone|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))),
-		//$onceCalled = false,
+		$onceCalled = false,
 		jqueryLink = '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
 		debugRequired = true,
 		$,
 		_window_dataObject = {};
 
-  if(window._pm_object === undefined) window._pm_object = {};
-
-	// var Debugger = function () { };
-	// Debugger.log = function (message) {
-	// 	try {
-	// 		if(debugRequired) console.log(message);
-	// 	} catch (exception) {}
-	// };
+	var Debugger = function () { };
+	Debugger.log = function (message) {
+		try {
+			if(debugRequired) console.log(message);
+		} catch (exception) {}
+	};
 
 	var findContainer = function(callback){
 		var tempObject = [];
@@ -74,7 +72,7 @@
 		container.containerDiv.append(iframe);
 
 		try{
-			console.log('Log : Setting html content in try block !!');
+			Debugger.log('Log : Setting html content in try block !!');
 			var doc = iframe.contentDocument || iframe.contentWindow.document;
 			doc.open();
 			doc.write('<head><style>html{margin:0 !important;background:transparent;}body{margin:0 !important;position:relative !important;border:0;background-color:transparent;}img{width:100% !important;}object{width:100% !important;}body iframe{width:100% !important;background:transparent;}</style><script type="text/javascript">var d=document,w=window,interval,el=w.frameElement,mIn,vIn;function init(){interval=setInterval(function(){if(d.getElementsByTagName("iframe").length>0||d.getElementsByTagName("img").length>0||d.getElementsByTagName("object").length>0||d.getElementsByTagName("embed").length>0){w.clearInterval(interval);var ip=d.getElementsByTagName("iframe");if(ip.length==0){ani();}else{ip[0].onload=ani();}}},200);}function ani(){ el.setAttribute("loadStatus",1); d.body.style.display="block"; } function bdn(){el.style.display="none";} \x3C/script></head><body onload="init()"> <div style="position: absolute;top: 0;height: 18px;width: 100%;"><!-- <a href="http://www.hoverr.me" target="_blank" style="float: right;margin-right: 25px;color: #ffffff;text-shadow: 1px 1px 2px #000000;font-family: monospace;line-height: 18px;font-size: 14px;"">Advertisement</a> --><span id="adSenceImagePushClose" style="position:absolute;top:0;right:0;height:19px;width:19px;text-align:center;cursor:pointer;font-size:19px;line-height:18px;color:#F0F0F0;z-index:2147483648;background:#C1C1C1;" onClick="bdn()" title="Close">&times</span></div>'+ $adTag + $pixelPingHtml +'</body>');
@@ -85,31 +83,22 @@
 
 	// After deciding which jQuery to use this function get called
 	var initialize = function(){
-		console.log('Log : Initialize function called !!');
+		Debugger.log('Log : Initialize function called !!');
 		// if ($isMobile) return;
 
-    //console.log($onceCalled);
-
-		// if(!$onceCalled) {
-		// 	$onceCalled = true;
+		if(!$onceCalled) {
+			$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
-
-      window._pm_object = JSON.parse(localStorage.getItem("hoverrneo"));
-
-      console.log(window._pm_object);
 
 			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
 			else _window_dataObject = window._pm_object.inimage;
-
-      console.log(window._pm_object);
-      console.log(_window_dataObject);
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
 					putAd(container[i]);
 				});
 			});
-	//	}
+		}
 	};
 
 	// Create script tag with forwarded link and put under the head section and get back to scriptLoadHandler function
