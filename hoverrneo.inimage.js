@@ -94,8 +94,6 @@
 		// 	$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
 
-      console.log(window.hoverrneo);
-
       window.hoverrneo = JSON.parse(localStorage.getItem("hoverrneo"));
 
       console.log(window.hoverrneo);
@@ -103,7 +101,8 @@
 			if(window.hoverrneo === undefined || window.hoverrneo.inimage == undefined) return;
 			else _window_dataObject = window.hoverrneo.inimage;
 
-      console.lo
+      console.log(window.hoverrneo);
+      console.log(_window_dataObject);
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
