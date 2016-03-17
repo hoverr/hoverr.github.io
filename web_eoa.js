@@ -1,6 +1,6 @@
 /*
 	Version : 0.0.1
-	Created On : 11.03.2015
+	Created On : 17.03.2015
 
 	-- hoverr_tera.js load this js
 	-- It get data set by hoverr_tera.js 
@@ -28,16 +28,32 @@
 			if($(_window_dataObject.selector).length != 0){
 				window.clearInterval(intr);
 
-				$(_window_dataObject.selector).each(function(){
-					var containerDiv = $('<div class="_adSenceImagePushContainer" style="height:auto;width:100%;text-align:center;padding:0; margin:auto !important;position:relative !important;background: transparent;"></div>');
-					$(this).after(containerDiv);
+				var inline = $(_window_dataObject.selector);
+				var containerDiv = $('<div class="_adSenceImagePushContainer" style="height: auto; width: 100%; text-align: center; padding: 0px; margin:auto auto; !important; position: relative !important; overflow: hidden !important; background: transparent;"></div>');
+				inline.after(containerDiv);
 
-					tempObject.push({
-						containerDiv: containerDiv,
-						width: containerDiv.width(),
-						position: $(this).offset()
-					});
+
+				var width = _window_dataObject.dimension.width,
+					safeLimit = 0,
+					element = containerDiv;
+				while(true){
+					if(element.is(':hidden')){
+						element = element.parent();
+						safeLimit++;
+					}
+					else{
+						width = element.width();
+						break;
+					}
+					if(safeLimit == 10) break;
+				};
+
+				tempObject.push({
+					containerDiv: containerDiv,
+					width: width,
+					position: containerDiv.offset()
 				});
+				containerDiv.css({'display':'none'});
 
 				if(typeof(callback) === "function" && callback !== undefined) callback(tempObject);
 				else return tempObject;
@@ -57,15 +73,15 @@
 		$iframeHeight = _window_dataObject.dimension.height,
 
 		$scale = (($width / $iframeWidth) <= 1) ? ($width / $iframeWidth) : 1,
-		$left = "left: "+ (($width - $iframeWidth)/2) +"px;",
-		$bottom = Math.ceil((($iframeHeight * $scale) - $iframeHeight)/2),
+		$left = (($width / $iframeWidth) <= 1) ? "left: "+ (($width - $iframeWidth)/2) +"px;" : "",
+		$bottom = 0,
 		$cssText,
 		$top,
 		$adTag = _window_dataObject.tag,
 		$key = [window._pm_object.host, window._pm_object.section, window._pm_object.web_or_mobile, _window_dataObject.id, _window_dataObject.is_default],
 		$pixelPingHtml = '<img src="http://track.hoverr.media/pixel.gif?key='+ $key.join('|') +'" style="display:none;"/>';
 
-		$cssText = "height:"+ $iframeHeight +"px !important; min-height:"+ $iframeHeight +"px !important; width:"+ $iframeWidth +"px !important; overflow:hidden;"+ $left +"bottom:"+ $bottom +"px;margin:0 auto; position:absolute; background: transparent; z-index: 2; -moz-transform: scale("+ $scale +"); -o-transform: scale("+ $scale +"); -webkit-transform: scale("+ $scale +"); transform: scale("+ $scale +"); max-width:initial !important;";
+		$cssText = "height:"+ $iframeHeight +"px !important; min-height:"+ $iframeHeight +"px !important; width:"+ $iframeWidth +"px !important; overflow:hidden;"+ $left +"bottom:"+ $bottom +"px;margin:0 auto 15px;position:relative; background: transparent; z-index: 2; -moz-transform: scale("+ $scale +"); -o-transform: scale("+ $scale +"); -webkit-transform: scale("+ $scale +"); transform: scale("+ $scale +"); max-width:initial !important;";
 
 		setAttributes(iframe, {"height": $iframeHeight, "scrolling": "no", "frameBorder": 0, "allowtransparency": "true", "class": "_adSenceImagePush", "width": $iframeWidth, "loadStatus": 0, "data-width": $iframeWidth, "data-height": $iframeHeight, "style":$cssText});
 
@@ -79,12 +95,19 @@
 			doc.close();
 		}
 		catch(e){}
+
+		var windowHeight = $(window).height();
+		$(window).scroll(function(){
+			if(($(window).scrollTop() + (windowHeight - Math.ceil(windowHeight / 4))) > container.position.top){
+				if($(container.containerDiv).attr('hov-no-animation') === undefined) container.containerDiv.slideDown(1000);
+			}
+		});
 	};
 
 	// After deciding which jQuery to use this function get called
 	var initialize = function(){
 		Debugger.log('Log : Initialize function called !!');
-		// if ($isMobile) return;
+		//if ($isMobile) return;
 
 		if(!$onceCalled) {
 			$onceCalled = true;
@@ -97,8 +120,8 @@
         //do nothing
       }
 
-			if(window._pm_object === undefined || window._pm_object.inimage == undefined) return;
-			else _window_dataObject = window._pm_object.inimage;
+			if(window._pm_object === undefined || window._pm_object.web_eoa == undefined) return;
+			else _window_dataObject = window._pm_object.web_eoa;
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
@@ -131,4 +154,5 @@
 		})
 	}
 	else initialize();
+
 })();
