@@ -89,10 +89,6 @@
 				if($(container.containerDiv).attr('hov-no-animation') === undefined) container.containerDiv.slideDown(1000);
 			}
 		});
-
-		$('html, body').animate({
-			scrollTop: container.position.top - 250
-		}, 1500);
 	};
 
 	// After deciding which jQuery to use this function get called
