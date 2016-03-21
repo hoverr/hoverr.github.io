@@ -171,8 +171,8 @@
 					if(this.readyState=='interactive' || this.readyState == 'complete' || this.readyState == 'loaded') initialize();
 				};
 			} else document.onload = initialize;
-		})
-		backupCall();
+			backupCall();
+		});
 	}
 	else{
 		if (document.readyState) {
