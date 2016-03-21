@@ -106,16 +106,17 @@
 		if(!$onceCalled) {
 			$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
+			
+			var localstorageData;
+			try{
+				localstorageData = JSON.parse(localStorage.getItem("hoverrneo"));	
+			}
+			catch(e){
+				localstorageData = undefined;
+			}
 
-      try{
-        if(window._pm_object === undefined)
-          window._pm_object = JSON.parse(localStorage.getItem("hoverrneo"));
-      } catch (err) {
-        //do nothing
-      }
-
-			if(window._pm_object === undefined || window._pm_object.web_normal_gutter == undefined) return;
-			else _window_dataObject = window._pm_object.web_normal_gutter;
+			if(localstorageData === undefined || localstorageData.web_normal_gutter == undefined) return;
+			else _window_dataObject = localstorageData.web_normal_gutter;
 
 			findContainer(function(container){
 				$.each(container, function(i, v){
@@ -140,6 +141,27 @@
 		};
 		(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(s);
 	};
+	
+	var backupCall = function(){
+		$ = $ || window.jQuery || window.$;
+		$(document).ready(function(){
+			if(!$onceCalled) initialize();
+		});
+
+		$(window).load(function() {
+			if(!$onceCalled){
+				Debugger.log('Log : Calling from the backup call windowload.')
+				initialize();	
+			} 
+		});
+
+		document.addEventListener('DOMContentLoaded', function() {
+		   if(!$onceCalled){
+				Debugger.log('Log : Calling from the backup call DOMContentLoaded.')
+				initialize();	
+			} 
+		}, false);
+	};
 
 	// Load jQuery if not present and swipe handler if mobile
 	if (window.jQuery === undefined || parseInt(window.jQuery.fn.jquery.split('.').join("")) < 142) {
@@ -150,6 +172,7 @@
 				};
 			} else document.onload = initialize;
 		})
+		backupCall();
 	}
 	else{
 		if (document.readyState) {
@@ -157,5 +180,6 @@
 				if(this.readyState=='interactive' || this.readyState == 'complete' || this.readyState == 'loaded') initialize();
 			};
 		} else document.onload = initialize;
+		backupCall();
 	}
 })();
