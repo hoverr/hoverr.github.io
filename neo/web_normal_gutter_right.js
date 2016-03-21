@@ -163,6 +163,7 @@
 		}, false);
 	};
 
+
 	// Load jQuery if not present and swipe handler if mobile
 	if (window.jQuery === undefined || parseInt(window.jQuery.fn.jquery.split('.').join("")) < 142) {
 		loadJS(jqueryLink, function(status){
