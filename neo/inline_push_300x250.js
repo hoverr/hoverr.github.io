@@ -130,15 +130,16 @@
 			$onceCalled = true;
 			$ = $ || window.jQuery || window.$;
 
-      try{
-        if(window._pm_object === undefined)
-          window._pm_object = JSON.parse(localStorage.getItem("hoverrneo"));
-      } catch (err) {
-        //do nothing
-      }
+			var localstorageData;
+			try{
+				localstorageData = JSON.parse(localStorage.getItem("hoverrneo"));	
+			}
+			catch(e){
+				localstorageData = undefined;
+			}
 
-			if(window._pm_object === undefined || window._pm_object.web_inline_push_300x250 == undefined) return;
-			else _window_dataObject = window._pm_object.web_inline_push_300x250;
+			if(localstorageData === undefined || localstorageData.web_inline_push_300x250 == undefined) return;
+			else _window_dataObject = localstorageData.web_inline_push_300x250;
 			_window_dataObject.selector = JSON.parse(_window_dataObject.selector);
 
 			findContainer(function(container){
@@ -162,6 +163,27 @@
 		};
 		(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(s);
 	};
+	
+	var backupCall = function(){
+		$ = $ || window.jQuery || window.$;
+		$(document).ready(function(){
+			if(!$onceCalled) initialize();
+		});
+
+		$(window).load(function() {
+			if(!$onceCalled){
+				Debugger.log('Log : Calling from the backup call windowload.')
+				initialize();	
+			} 
+		});
+
+		document.addEventListener('DOMContentLoaded', function() {
+		   if(!$onceCalled){
+				Debugger.log('Log : Calling from the backup call DOMContentLoaded.')
+				initialize();	
+			} 
+		}, false);
+	};
 
 	// Load jQuery if not present and swipe handler if mobile
 	if (window.jQuery === undefined || parseInt(window.jQuery.fn.jquery.split('.').join("")) < 142) {
@@ -171,6 +193,7 @@
 					if(this.readyState=='interactive' || this.readyState == 'complete' || this.readyState == 'loaded') initialize();
 				};
 			} else document.onload = initialize;
+			backupCall();
 		})
 	}
 	else{
@@ -179,5 +202,6 @@
 				if(this.readyState=='interactive' || this.readyState == 'complete' || this.readyState == 'loaded') initialize();
 			};
 		} else document.onload = initialize;
+		backupCall();
 	}
 })();
