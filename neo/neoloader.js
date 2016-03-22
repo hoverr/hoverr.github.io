@@ -1,6 +1,6 @@
 (function() {
   
-  var window._pm_object = {};
+  window._pm_object = {};
   try {
       window._pm_object = JSON.parse(localStorage.getItem("hoverrneo"));
   } catch (err) {
