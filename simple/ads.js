@@ -18,8 +18,8 @@ var player = videojs('content_video');
 
 var options = {
   id: 'content_video',
-  //adTagUrl: 'https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-4631387039185633&slotname=5984306776&ad_type=standardvideo&description_url=http%3A%2F%2Fintoday.in&videoad_start_delay=0&type=all'
-  adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&' +
+  adTagUrl: 'https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-4631387039185633&slotname=5984306776&ad_type=standardvideo&description_url=http%3A%2F%2Fintoday.in&videoad_start_delay=0&type=all'
+  //adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&' +
       'iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&' +
       'impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&' +
       'cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&' +
