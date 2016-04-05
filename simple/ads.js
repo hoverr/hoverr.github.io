@@ -27,7 +27,7 @@ var options = {
 
   //New VAST tag:
   //adTagUrl: 'https://ima3vpaid.appspot.com/?adTagUrl=https%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fclient%3Dca-video-pub-4631387039185633%26slotname%3D3539573776%26ad_type%3Dvideo%26description_url%3Dhttp%253A%252F%252Fwebdunia.com%26videoad_start_delay%3D0&type=all';
-  atTagUrl: 'https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-4631387039185633&slotname=3539573776&ad_type=video&description_url=http%3A%2F%2Fwebdunia.com&videoad_start_delay=0&type=all';
+  adTagUrl: 'https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-4631387039185633&slotname=3539573776&ad_type=video&description_url=http%3A%2F%2Fwebdunia.com&videoad_start_delay=0&type=all';
 
 };
 
