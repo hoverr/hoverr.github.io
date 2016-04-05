@@ -23,8 +23,10 @@ var options = {
   //adTagUrl: 'https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-4631387039185633&slotname=5984306776&ad_type=standardvideo&description_url=http%3A%2F%2Fintoday.in&videoad_start_delay=0&type=all'
   
   //Test VAST tag:
-  adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&vid=short_onecue&correlator='
+  //adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&vid=short_onecue&correlator='
 
+  //New VAST tag:
+  adTagUrl: 'https://ima3vpaid.appspot.com/?adTagUrl=https%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fclient%3Dca-video-pub-4631387039185633%26slotname%3D3539573776%26ad_type%3Dvideo%26description_url%3Dhttp%253A%252F%252Fwebdunia.com%26videoad_start_delay%3D0&type=all';
 };
 
 player.ima(options);
