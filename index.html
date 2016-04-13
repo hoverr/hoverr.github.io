@@ -1,33 +1,90 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 
-<head>
-    <title>Hoverr Demo Pages</title>
-</head>
+    <script type="text/javascript" src="http://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script type="text/javascript" src="application.js"></script>
+    <script type="text/javascript" src="ads.js"></script>
+    <script type="text/javascript" src="video_player.js"></script>
 
-<body>
-    <h1>Hoverr Demo Pages</h3>
+    <!-- GPT Companion Code -->
+    <!-- Initialize the tagging library -->
+     <script type='text/javascript'>
+       var googletag = googletag || {};
+       googletag.cmd = googletag.cmd || [];
+       (function() {
+         var gads = document.createElement('script');
+         gads.async = true;
+         gads.type = 'text/javascript';
+         gads.src = 'http://www.googletagservices.com/tag/js/gpt.js';
+         var node = document.getElementsByTagName('script')[0];
+         node.parentNode.insertBefore(gads, node);
+       })();
+     </script>
 
-  <div id="linkList"></div>
+     <!-- Register your companion slots -->
+     <script type='text/javascript'>
+       googletag.cmd.push(function() {
+         // Supply YOUR_NETWORK/YOUR_UNIT_PATH in place of 6062/iab_vast_samples.
+         googletag.defineSlot('/6062/iab_vast_samples', [728, 90], 'companionDiv')
+             .addService(googletag.companionAds())
+             .addService(googletag.pubads());
+         googletag.companionAds().setRefreshUnfilledSlots(true);
+         googletag.pubads().enableVideoAds();
+         googletag.enableServices();
+       });
+     </script>
 
-  <script type="text/javascript">  
-    function pad(num, size) {
-        var s = "000" + num;
-        return s.substr(s.length-size);
-    }
+    <title>IMA HTML5 SDK Advanced Demo</title>
+  </head>
+  <body>
+  <div id="container">
+    <header>IMA HTML5 SDK Advanced Demo</header>
 
-    for (var i = 0; i < 15; i++) {
-      var name = pad((i+1), 3);
-      var data = document.createElement('a');
-      var linkText = document.createTextNode(name);
-      data.appendChild(linkText);
-      data.title = name;
-      data.href = './'+ name + '.html';
-      document.getElementById('linkList').appendChild(data);
-      var br = document.createElement('br');
-      document.getElementById('linkList').appendChild(br);
-    };
+    <center>
+      <label for="tag">Tag (<span id="sampleAdTag" class="urlLink">sample</span>):&nbsp;</label>
+      <input type="text" size="75" id="tagText" />
+    </center>
 
+    <div id="videoplayer">
+      <video id="content">
+        <source src="http://rmcdn.2mdn.net/Demo/vast_inspector/android.mp4"></source>
+        <source src="http://rmcdn.2mdn.net/Demo/vast_inspector/android.webm"></source>
+      </video>
+      <div id="adcontainer">
+      </div>
+      <button id="playpause" title="Play/Pause">&#9654;</button>
+      <button id="fullscreen" title="Full screen">[&nbsp;&nbsp;&nbsp;]</button>
+    </div>
+
+    <div id="customClick">
+      <div id="customClickTextWrapper">Click here for more info on your ad.</div>
+    </div>
+
+    <!-- Declare a div where you want the companion to appear. Use
+          googletag.display() to make sure the ad is displayed. -->
+    <div id="companionDiv">
+      <script type="text/javascript">
+        // Using the command queue to enable asynchronous loading.
+        // The unit will not actually display now - it will display when
+        // the video player is displaying the ads.
+        googletag.cmd.push(function() { googletag.display('companionDiv'); });
+      </script>
+    </div>
+
+    <div id="console">
+    Welcome to IMA HTML5 SDK Demo!
+    </div>
+
+    <footer>Copyright (C) 2013 Google Inc.</footer>
+  </div>
+  <script type="text/javascript">
+  var application = null;
+
+  window.onload = function() {
+    application = new Application();
+  };
   </script>
-</body>
+  </body>
 </html>
