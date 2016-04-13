@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>KKN</title>
+</head>
+
+<body>
+  <!-- HTML5VAST -->
+  <script src="html5vast.js"></script>
+  <link rel="stylesheet" href="html5vast.css" type="text/css" />
+  <VIDEO name='test-video' id='test-video' width="500" height="350" controls>
+    <source src='onesec.mp4' type='video/mp4' />
+  </VIDEO>
+  <script>
+  //Test HTML5VAST
+  var my_vast_url = 'https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-4631387039185633&slotname=3539573776&ad_type=video&description_url=http%3A%2F%2Fwebdunia.com&videoad_start_delay=0&type=all';
+  html5vast("test-video", my_vast_url, {
+    ad_caption: 'Advertisement'
+  });
+  </script>
+  </p>
+</body>
+
+</html>
