@@ -1,12 +1,43 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>DEMO MODE TEST</title>
-  <script src="kiran.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
 </head>
 <body>
-
-<div id="abc"></div>
   
- 
+  <div id="video-container"></div>
+<script>
+	window.srAsyncInit = function() {
+		SR('video-container', {    
+			inText: {
+	        	adTitle: {
+	        		text: 'Advertisement'
+	        	}
+	        }, 
+	        partnerID: 'your-streamrail-api-key',
+	        ads: {
+	        	schedule: [{
+	        		position: 'pre-roll',
+	        		server: {
+	        			tag: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator='
+	        		}
+	        	}]
+	        },
+	        scaleMode: 'original',
+	        autoplay: true,     
+			bgColor: 'transparent'
+	    });
+	};
+	(function(d, s, id){
+		var js, srjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = 'http://hoverr.github.io/sr.ads.js';
+		srjs.parentNode.insertBefore(js, srjs);
+	}(document, 'script', 'streamrail-jssdk'));
+</script>
+
 </body>
 </html>
