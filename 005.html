@@ -22,8 +22,8 @@
     googletag.pubads().disableInitialLoad();
     googletag.pubads().enableSingleRequest();
     googletag.pubads().collapseEmptyDivs();
-    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1466670497281-0'); });
     googletag.enableServices();
+    googletag.pubads().refresh();
     googletag.pubads().addEventListener('slotRenderEnded', function(event) {
       console.log('Creative with id: ' + event.creativeId + ' is rendered to slot of size: ' + event.size[0] + 'x' + event.size[1]);
     });
