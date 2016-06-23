@@ -22,6 +22,9 @@
     googletag.pubads().enableSingleRequest();
     googletag.pubads().collapseEmptyDivs();
     googletag.enableServices();
+    googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+      console.log('Creative with id: ' + event.creativeId + ' is rendered to slot of size: ' + event.size[0] + 'x' + event.size[1]);
+    });
   });
 </script>
 
