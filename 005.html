@@ -25,20 +25,26 @@
       console.log('Creative with id: ' + event.creativeId + ' is rendered to slot of size: ' + event.size[0] + 'x' + event.size[1]);
     
       
-  //console.log("googletag slotRenderEnded", event.slot.b.f);
-  var containerId = "";
-
-  // WARN: Fragile access of private object within DFP Slot Object returned with the event
-  //       It's the only way to get access to the id of the DOM element attached to the slot
-  // FIXME: Ideally we need to contact Google and request a public API method to return the id
-  if (typeof event.slot !== "undefined") {
-    if (typeof event.slot.m !== "undefined") {
-      if (typeof event.slot.m.o !== "undefined") {
-        containerId = "#" + event.slot.m.o;
-      }
-    }
-  }
+     //console.log("googletag slotRenderEnded", event.slot.b.f);
+     var containerId = "";
+   
+     // WARN: Fragile access of private object within DFP Slot Object returned with the event
+     //       It's the only way to get access to the id of the DOM element attached to the slot
+     // FIXME: Ideally we need to contact Google and request a public API method to return the id
+     if (typeof event.slot !== "undefined") {
+       if (typeof event.slot.m !== "undefined") {
+         if (typeof event.slot.m.o !== "undefined") {
+           containerId = "#" + event.slot.m.o;
+         }
+       }
+     }
      console.log(containerId);
+     
+     if (event.isEmpty === true) {
+       document.getElementById(containerId).style.display = 'none';
+     } else {
+       document.getElementById(containerId).style.display = 'block';
+     }
      
      
     });
