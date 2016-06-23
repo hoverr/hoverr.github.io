@@ -17,6 +17,8 @@
 </script>
 
 <script type='text/javascript'>
+
+googletag.cmd.push(function() {
  googletag.pubads().addEventListener('slotRenderEnded', function(event) {
       console.log(event);
       console.log('Creative with id: ' + event.creativeId + ' is rendered to slot of size: ' + event.size[0] + 'x' + event.size[1]);
@@ -45,6 +47,7 @@
      
      
     });
+});
 </script>
 
 <script type='text/javascript'>
