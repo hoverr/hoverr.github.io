@@ -3,13 +3,28 @@
    <title>Programmatic Ad Test page</title>
 </head>
 <body>
-
-<p>Programmatic Ad Test page</p>
+   <div
+      class="fb-like"
+      data-share="true"
+      data-width="450"
+      data-show-faces="true">
+   </div>
+   <script>
+     window.fbAsyncInit = function() {
+       FB.init({
+         appId      : '505812169609154',
+         xfbml      : true,
+         version    : 'v2.6'
+       });
+     };
    
-<div style="width:728px">
-   <script src="http://d3clqjla00sltp.cloudfront.net/programatic.js"></script>
-</div>
-
-
+     (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+   </script>
 </body>
 </html>
