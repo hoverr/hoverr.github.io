@@ -1,7 +1,7 @@
 <html>
 <head>
  
-<script type='text/javascript'>
+ <script type='text/javascript'>
   var googletag = googletag || {};
   googletag.cmd = googletag.cmd || [];
   (function() {
@@ -16,60 +16,24 @@
   })();
 </script>
 
-
-
 <script type='text/javascript'>
   googletag.cmd.push(function() {
-    googletag.defineSlot('/175265624/KiranAU', [728, 90], 'div-gpt-ad-1466675308288-0').addService(googletag.pubads());
+    googletag.defineSlot('/175265624/KiranFBTestAdUnit', [300, 250], 'div-gpt-ad-1467809351860-0').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.pubads().collapseEmptyDivs();
     googletag.enableServices();
   });
 </script>
-
+ 
 </head>
 <body>
 
-<!-- /175265624/KiranAU -->
-<div id='div-gpt-ad-1466675308288-0' style='height:90px; width:728px; border-style: solid; border-width: 5px; display:none;'>
+<!-- /175265624/KiranFBTestAdUnit -->
+<div id='div-gpt-ad-1467809351860-0' style='height:250px; width:300px;'>
 <script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1466675308288-0'); });
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1467809351860-0'); });
 </script>
 </div>
-
-<script type='text/javascript'>
-
-googletag.cmd.push(function() {
- googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-      console.log(event);
-      console.log('Creative with id: ' + event.creativeId + ' is rendered to slot of size: ' + event.size[0] + 'x' + event.size[1]);
-    
-      
-     //console.log("googletag slotRenderEnded", event.slot.b.f);
-     var containerId = "";
-   
-     // WARN: Fragile access of private object within DFP Slot Object returned with the event
-     //       It's the only way to get access to the id of the DOM element attached to the slot
-     // FIXME: Ideally we need to contact Google and request a public API method to return the id
-     if (typeof event.slot !== "undefined") {
-       if (typeof event.slot.m !== "undefined") {
-         if (typeof event.slot.m.o !== "undefined") {
-           containerId = "#" + event.slot.m.o;
-         }
-       }
-     }
-     console.log(containerId);
-     
-     if (event.isEmpty === true) {
-       document.getElementById(containerId).style.display = 'none';
-     } else {
-       document.getElementById(containerId).style.display = 'block';
-     }
-     
-     
-    });
-});
-</script>
 
 </body>
 </html>
