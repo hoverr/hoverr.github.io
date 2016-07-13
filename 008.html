@@ -1,36 +1,120 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Heap</title>
-  <script src="http://one.hoverr.media/js/tera_hgi.js"></script>
-</head>
-<body>
-  
-  
-  
-  <p>What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Slider</title>
+		<script src="http://one.hoverr.media/js/tera_hgi.js"></script> 
+		<style>
+			body{
+				margin:0;
+				padding:0;
+			}
+			.slider-container{
+				width: 300px;
+				margin: auto;
+				background: transparent;
+				border: 1px solid #ccc;
+				overflow: hidden;
+				position: relative;
+			}
+			.slider-container ul.slider{
+				white-space: nowrap;
+				margin: 0;
+				padding:0;
+				list-style: none;
+				width: 2100px;
+			}
+			.slider-container .slider li.slide{
+				width: 300px;
+				min-height: 300px;
+				background: #ccc;
+				/*display: inline-block;*/
+				float: left;
+			}
+			.table{
+				display: table;
+				width: 100%;
+				height: 280px;
+			}
+			.table-cell{
+				display: table-cell;
+				width: 100%;
+				vertical-align: middle;
+				text-align: center;
+			}
+			span.arrow {
+				position: absolute;
+				top: 36%;
+				font-size: 60px;
+				line-height: 1;
+				cursor: pointer;
+			}
+			span.arrow.left{
+				left: 0
+			}
+			span.arrow.right{
+				right: 0
+			}
+		</style>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="slider-container">
+			<ul class="slider" style="margin-left:0;">
+				<li class="slide">
+					<div class="table">
+						<div class="table-cell">Slide 1</div>
+					</div>
+				</li>
+				<li class="slide">
+					<div class="table">
+						<div class="table-cell">Slide 2</div>
+					</div>
+				</li>
+				<li class="slide">
+					<div class="table">
+						<div class="table-cell">Slide 3</div>
+					</div>
+				</li>
+				<li class="slide">
+					<div class="table">
+						<div class="table-cell">Slide 4</div>
+					</div>
+				</li>
+				<li class="slide">
+					<div class="table">
+						<div class="table-cell">Slide 5</div>
+					</div>
+				</li>
+				<li class="slide">
+					<div class="table">
+						<div class="table-cell">Slide 6</div>
+					</div>
+				</li>
+				<li class="slide">
+					<div class="table">
+						<div class="table-cell">Slide 7</div>
+					</div>
+				</li>
+			</ul>
+			<span class="arrow left"><</span>
+			<span class="arrow right">></span>
+		</div>
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+				var slider = jQuery('.slider');
+				jQuery('.arrow').click(function(){
+					var marginLeftValue = parseInt(slider.css('marginLeft').replace('px', ''));
 
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
-
-Where does it come from?
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-  
-  
-  <div id="bottle"></div>
-  
-  <p>What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
-
-Where does it come from?
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-</body>
+					if(jQuery(this).hasClass('left')){
+						if(marginLeftValue != 0) jQuery('.slider').stop().animate({'marginLeft': (marginLeftValue + 300) +'px'}, 200);
+					}
+					else{
+						if(marginLeftValue > -1800) jQuery('.slider').stop().animate({'marginLeft': (marginLeftValue - 300) +'px'}, 200)
+					}
+				});
+			});
+		</script>
+	</body>
 </html>
