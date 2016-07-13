@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<title>Slider</title>
-		<script src="http://one.hoverr.media/js/tera_hgi.js"></script> 
+		<script src="http://one.hoverr.media/js/tera_hgi.js"></script>
 		<style>
 			body{
 				margin:0;
@@ -108,10 +108,20 @@
 					var marginLeftValue = parseInt(slider.css('marginLeft').replace('px', ''));
 
 					if(jQuery(this).hasClass('left')){
-						if(marginLeftValue != 0) jQuery('.slider').stop().animate({'marginLeft': (marginLeftValue + 300) +'px'}, 200);
+						if(marginLeftValue != 0){
+							jQuery('.active').removeClass('active');
+							slider.stop().animate({'marginLeft': (marginLeftValue + 300) +'px'}, 200, function(){
+								slider.find('li').eq(Math.abs((marginLeftValue + 300)/300)).addClass('active');
+							});
+						}
 					}
 					else{
-						if(marginLeftValue > -1800) jQuery('.slider').stop().animate({'marginLeft': (marginLeftValue - 300) +'px'}, 200)
+						if(marginLeftValue > -1800){ 
+							jQuery('.active').removeClass('active');
+							slider.stop().animate({'marginLeft': (marginLeftValue - 300) +'px'}, 200, function(){
+								slider.find('li').eq(Math.abs((marginLeftValue - 300)/300)).addClass('active');
+							});
+						}
 					}
 				});
 			});
