@@ -2,40 +2,79 @@
 <html lang="en-us">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
-<title>Widgets Magazine</title> 
-<style type="text/css" media="screen"> 
-</style>
-
-<script type='text/javascript'>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
-  (function() {
-    var gads = document.createElement('script');
-    gads.async = true;
-    gads.type = 'text/javascript';
-    var useSSL = 'https:' == document.location.protocol;
-    gads.src = (useSSL ? 'https:' : 'http:') +
-      '//www.googletagservices.com/tag/js/gpt.js';
-    var node = document.getElementsByTagName('script')[0];
-    node.parentNode.insertBefore(gads, node);
-  })();
-</script>
-
-<script type='text/javascript'>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/175265624/Dummy_AdUnit', [728, 90], 'div-gpt-ad-1452680179385-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-  });
-</script>
 </head>
 
 <body>
-<!-- /175265624/Dummy_AdUnit -->
-<div id='div-gpt-ad-1452680179385-0' style='height:90px; width:728px;'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1452680179385-0'); });
-</script>
-</div>
+
+    <style>
+     #ad_root {
+        display: none;
+        font-size: 14px;
+        height: 250px;
+        line-height: 16px;
+        position: relative;
+        width: 300px;
+      }
+      .thirdPartyMediaClass {
+        height: 157px;
+        width: 300px;
+      }
+      .thirdPartyTitleClass {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 8px 0 4px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .thirdPartyBodyClass {
+        display: -webkit-box;
+        height: 32px;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .thirdPartyCallToActionClass {
+        color: #326891;
+        font-family: sans-serif;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+    </style>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.Event.subscribe(
+          'ad.loaded',
+          function(placementId) {
+            console.log('Audience Network ad loaded');
+            document.getElementById('ad_root').style.display = 'block';
+          }
+        );
+        FB.Event.subscribe(
+          'ad.error',
+          function(errorCode, errorMessage, placementId) {
+            console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+          }
+        );
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=1053611401397314";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="fb-ad" data-placementid="1053611401397314_1067602696664851" data-format="native" data-nativeadid="ad_root" data-testmode="false"></div>
+    <div id="ad_root">
+      <a class="fbAdLink">
+        <div class="fbAdMedia thirdPartyMediaClass"></div>
+        <div class="fbAdTitle thirdPartyTitleClass"></div>
+        <div class="fbAdBody thirdPartyBodyClass"></div>
+        <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
+      </a>
+    </div>
+      
+
+
 </body>
 </html>
