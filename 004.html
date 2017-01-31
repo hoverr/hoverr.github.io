@@ -26,10 +26,9 @@
     pushEvent = function(dataObject){
         var tempObject = {
             event: 'ScrollBehaviour',
-            hoverrQuarter: dataObject.quarter,
-            hoverrHalf: dataObject.half,
-            hoverrThreeQuarters: dataObject.threeQuarters,
-            hoverrFull: dataObject.full
+            toAction: dataObject.action,
+            toCategory: dataObject.category,
+            toLabel: dataObject.label
         };
         console.log(tempObject);
         // Data layer push on click to open it in large page
@@ -55,7 +54,12 @@
                 unbindEvent(window, 'scroll', scrollEventFn);
 
                 console.log(percentage);
-                pushEvent(percentage);
+                
+                pushEvent({
+                 action: 'Scroll',
+                category: 'category',
+                label: 'label'
+                });
             } else if (scroll > 75 && scrolled < 0.75) {
                 scrolled = 0.75;
                 percentage = gld('scrollBehaviour');
@@ -64,7 +68,11 @@
                 sld('scrollBehaviour', percentage);
 
                 console.log(percentage);
-                pushEvent(percentage);
+                pushEvent({
+                 action: 'Scroll',
+                category: 'category',
+                label: 'label'
+                });
             } else if (scroll > 50 && scrolled < 0.5) {
                 scrolled = 0.5;
                 percentage = gld('scrollBehaviour');
@@ -73,7 +81,11 @@
                 sld('scrollBehaviour', percentage);
 
                 console.log(percentage);
-                pushEvent(percentage);
+                pushEvent({
+                 action: 'Scroll',
+                category: 'category',
+                label: 'label'
+                });
             } else if (scroll > 25 && scrolled < 0.25) {
                 scrolled = 0.25;
                 percentage = gld('scrollBehaviour');
@@ -81,7 +93,11 @@
                 sld('scrollBehaviour', percentage);
 
                 console.log(percentage);
-                pushEvent(percentage);
+                pushEvent({
+                 action: 'Scroll',
+                category: 'category',
+                label: 'label'
+                });
             }
 
         },
@@ -100,8 +116,8 @@
     bindEvent(window, 'scroll', scrollEventFn);
 
 
-}();
- </script>
+}(); 
+</script>
 </head>
 <body>
  <p>
