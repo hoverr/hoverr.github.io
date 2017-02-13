@@ -47,6 +47,22 @@
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();
+ 
+ setInterval(function(){
+	_paq.push(['timespent','10','Spent 10 Seconds on this domain']);
+}, 10000);
+ 
+setInterval(function(){
+	_paq.push(['timespent','20','Spent 20 Seconds on this domain']);
+}, 20000);
+ 
+setInterval(function(){
+   _paq.push(['timespent','30','Spent 30 Seconds on this domain']);
+}, 30000);
+ 
+setInterval(function(){
+   _paq.push(['timespent','40','Spent morethan 30 Seconds on this domain']);
+}, 40000);
 </script>
 <!-- End Piwik Code -->
  
