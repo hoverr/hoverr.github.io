@@ -38,6 +38,49 @@
 <script type="text/javascript">
   var _paq = _paq || [];
   // tracker methods like "setCustomDimension" should be called before "trackPageView"
+ var currentPageUrl = window.location.host+window.location.pathname;
+var getBrowser = function(){
+
+	if (getBrowser.prototype._cachedValue) {
+		return getBrowser.prototype._cachedValue;
+	}
+
+	//Check Whether the browser is opera or not (identify by using window.opr object and opera addons are available)
+	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >=0;
+
+	//Check Whether the browser is chrome or not (identify by using window.chrome object prsents in browser are not)
+	var isChrome = (!!window.chrome && !isOpera);
+
+	//Check Whether the browser is Firefox or not (identify by using InstallTriggre object prsents in browser are not)
+	var isFirefox = typeof InstallTrigger !== 'undefined';
+
+	//Check Whether the browser is Safari or not (identify by using HTMLElement constructor object prsents in browser are not)
+	var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+
+	//Check Whether the browser is IE or not (identify by using conditional compilation supports in browser are not)
+	var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+	//Check Whether the browser is Edge or not (identify by using StyleMedia object prsents in browser are not)
+	var isEdge = !isIE && !!window.StyleMedia;
+
+	return getBrowser.prototype._cachedValue = isOpera ? 'Opera' : 
+								isChrome ? 'Chrome' : 
+								isFirefox ? 'Mozilla Firefox' :
+								isSafari ? 'Safari' :
+								isIE ? 'Internet Explore' :
+								isEdge ? 'Microsoft Edge' : 
+								'Navigator Undefined';
+};
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+var device = isMobile ? 'Mobile Device' : 'Desktop';
+var width = window.innerWidth || document.documentElement.clientWidth;
+var height = window.innerHeight || document.documentElement.clientHeight;
+var eventData = {
+    'action'    : device+'|'+getBrowser()+'|'+width+'X'+height+'|'+document.referrer,
+    'category'  : 'hov_pageview',
+    'label'     : currentPageUrl
+};
+_paq.push(['trackEvent', eventData.category , eventData.action]);
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   _paq.push(['enableHeartBeatTimer', 20]);
