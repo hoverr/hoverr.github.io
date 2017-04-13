@@ -1,7 +1,25 @@
 <html>
 <head>
- 
-<script type="text/javascript" src="//ht-hgti.hoverr.media/js/tera_hovgit.js" async></script>
+ <script type="text/javascript">
+!function() {
+	var e = document.createElement("script"),
+		t = "//ht-hgti.hoverr.media/js/tera_hovgit.js",
+		a = !1,
+		d = function() {
+			a || (a = !0, e.type = "text/javascript", e.src = t, (document.head || document.getElementsByTagName("head")[0]).appendChild(e))
+		};
+	
+	document.onreadystatechange = function () {
+		if("interactive" == document.readyState || "complete" == document.readyState || "loaded" == document.readyState){
+			d();
+		}
+	};
+	if("interactive" == document.readyState || "complete" == document.readyState || "loaded" == document.readyState){
+		d();
+	}
+}();
+</script>
+<!-- <script type="text/javascript" src="//ht-hgti.hoverr.media/js/tera_hovgit.js" async></script> -->
 <meta name="viewport" content="width=device-width">
 </head>
 <body>
