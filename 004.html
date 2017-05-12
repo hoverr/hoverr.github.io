@@ -15,7 +15,9 @@
 }();
 	if(window.DeviceMotionEvent){
   window.addEventListener('deviceorientation', function(event) {
-document.querySelectorAll('body > p:nth-child(26)')[0].innerHTML = event.alpha +'::::'+  event.beta +'::::'+ event.gamma;
+window.setTimeout(function(){
+	  document.querySelectorAll('body > p:nth-child(26)')[0].innerHTML = event.alpha +'::::'+  event.beta +'::::'+ event.gamma;
+},3000);
 });
 }else{
   console.log("DeviceMotionEvent is not supported");
