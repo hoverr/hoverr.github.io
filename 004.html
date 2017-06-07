@@ -13,15 +13,15 @@
 	};
 	("interactive" == document.readyState || "complete" == document.readyState || "loaded" == document.readyState) && d();
 }();
-	if(window.DeviceMotionEvent){
-  window.addEventListener('deviceorientation', function(event) {
-window.setTimeout(function(){
-	  document.querySelectorAll('body > p:nth-child(26)')[0].innerHTML = event.alpha +'::::'+  event.beta +'::::'+ event.gamma;
-},3000);
-});
-}else{
-  console.log("DeviceMotionEvent is not supported");
-}
+// 	if(window.DeviceMotionEvent){
+//   window.addEventListener('deviceorientation', function(event) {
+// window.setTimeout(function(){
+// 	  document.querySelectorAll('body > p:nth-child(26)')[0].innerHTML = event.alpha +'::::'+  event.beta +'::::'+ event.gamma;
+// },3000);
+// });
+// }else{
+//   console.log("DeviceMotionEvent is not supported");
+// }
 </script>
 <meta name="viewport" content="width=device-width">
 </head>
