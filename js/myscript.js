@@ -18,8 +18,8 @@ t$(document).ready(function(){
   var checkAdLoadfunction = function(){
     if(t$("._teraAdContainer")){
       console.log("Ad unit is present");
-      $('._teraAdContainer').mouseover(function(){
-        $(this).focus()
+      t$('._teraAdContainer').mouseover(function(){
+        t$(this).focus()
         console.log('Hoverred mouseover tera ad unit')
       });
     }
