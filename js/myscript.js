@@ -19,11 +19,10 @@ t$(document).ready(function(){
     if(t$("._teraAdContainer")){
       console.log("Ad unit is present");
       t$('._teraAdContainer').mouseover(function(){
-        t$(this).focus()
+        t$(this).focus();
         console.log('Hoverred mouseover tera ad unit')
       });
     }
-    return msg;
   }
   checkAdLoadfunction();
 });
