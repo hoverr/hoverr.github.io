@@ -1,15 +1,3 @@
-window.timerValue = 0;
-var timerInit = window.setInterval(function(){
-  if(timerValue < 100){
-    timerValue += 1;
-    console.log(timerValue);
-    var event = new CustomEvent("trackevent", { "detail": timerValue });
-    window.dispatchEvent(event);
-  } else {
-    window.clearInterval(timerInit);
-  }
-}, 1000);
-
 window.checkAdLoad = function(){
   var checkAdLoadfunction = function(){
     if($("._teraAdContainer")){
