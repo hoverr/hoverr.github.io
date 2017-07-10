@@ -18,8 +18,8 @@ t$(document).ready(function(){
   var checkAdLoadfunction = function(){
     if(t$("._abmMainAdContainer")){
       console.log("Ad unit is present");
-      t$('._teraAdContainer').mouseover(function(){
-        t$(this).find('._abmAdContainer').text("Mouse over tera ad unit")
+      t$('._abmAdContainer').mouseover(function(){
+        t$(this).find('._abmAdContainer')
         console.log('Hoverred mouse over tera ad unit')
       });
     }
