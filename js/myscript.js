@@ -6,7 +6,7 @@ window.checkAdLoad = function(){
     else{
       console.log("Ad unit is not present")
     }
-    var validateAd = new CustomEvent("trackAdLoad", { "detail": checkAdLoadfunction });
-    window.dispatchEvent(validateAd);
   }
+  var validateAd = new CustomEvent("trackAdLoad", { "detail": checkAdLoadfunction });
+  window.dispatchEvent(validateAd);
 }
