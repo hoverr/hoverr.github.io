@@ -13,12 +13,12 @@
 //   window.dispatchEvent(validateAd);
 // }
 
-$(document).ready(function(){
+t$(document).ready(function(){
   console.log("Checking the AdInstances.");
   var checkAdLoadfunction = function(){
     var msg = "Ad unit is not present";
-    if($("._teraAdContainer")){
-      console.log("Ad unit is present")
+    if(t$("._teraAdContainer")){
+      console.log("Ad unit is present");
       msg = "Ad unit is present";
     }
     return msg;
