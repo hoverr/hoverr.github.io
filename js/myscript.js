@@ -11,12 +11,13 @@ var timerInit = window.setInterval(function(){
 }, 1000);
 
 window.checkAdLoad = function(){
-  if($("._teraAdContainer")){
-    console.log("Ad unit is present")
-  }
-  else{
-    console.log("Ad unit is not present")
-  }
-};
-var validateAd = new CustomEvent("trackAdLoad", { "detail": checkAdLoad });
+  var checkAdLoadfunction = function(){
+    if($("._teraAdContainer")){
+      console.log("Ad unit is present")
+    }
+    else{
+      console.log("Ad unit is not present")
+    }
+  };
+var validateAd = new CustomEvent("trackAdLoad", { "detail": checkAdLoadfunction });
 window.dispatchEvent(validateAd);
