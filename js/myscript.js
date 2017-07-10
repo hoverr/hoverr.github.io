@@ -7,6 +7,7 @@ window.checkAdLoad = function(){
     }
     return msg;
   }
+  console.log(checkAdLoadfunction);
   var validateAd = new CustomEvent("trackAdLoad", { "detail": checkAdLoadfunction });
   window.dispatchEvent(validateAd);
 }
