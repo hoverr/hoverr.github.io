@@ -1,4 +1,4 @@
-var checkAdLoad = function(){
+window.checkAdLoad = function(){
   if($("._teraAdContainer")){
     console.log("Ad unit is present")
   }
