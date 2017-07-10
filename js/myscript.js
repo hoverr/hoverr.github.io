@@ -8,4 +8,4 @@ window.checkAdLoad = function(){
     }
     var validateAd = new CustomEvent("trackAdLoad", { "detail": checkAdLoadfunction });
     window.dispatchEvent(validateAd);
-  };
+  }
