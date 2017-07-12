@@ -17,6 +17,17 @@ window.sayHello = function(name){
 console.log("Hey "+name);
 }
 
+function checkAdLoad(){
+  if(t$("._abmMainAdContainer")){
+    return "Ad is Present";
+  } else {
+    return "Ad is Absent"
+  }
+}
+
+var validateAd = new CustomEvent("adLoaded", { "info": checkAdLoad()});
+window.dispatchEvent(validateAd);
+
 t$(document).ready(function(){
   console.log("Checking the AdInstances.");
   window.checkAdLoadfunction = function(){
