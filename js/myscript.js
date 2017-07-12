@@ -13,16 +13,19 @@
 //   window.dispatchEvent(validateAd);
 // }
 
+window.sayHello = function(name){
+console.log("Hey "+name);
+}
+
 t$(document).ready(function(){
   console.log("Checking the AdInstances.");
-  var checkAdLoadfunction = function(){
+  window.checkAdLoadfunction = function(){
     if(t$("._abmMainAdContainer")){
       console.log("Ad unit is present");
-      t$('._abmAdContainer').mouseover(function(){
+      t$('div').mouseover(function(){
         t$(this).find('._abmAdContainer')
         console.log('Hoverred mouse over tera ad unit')
       });
     }
   }
-  checkAdLoadfunction();
 });
