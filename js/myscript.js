@@ -17,16 +17,29 @@ window.sayHello = function(name){
 console.log("Hey "+name);
 }
 
+function checkAdLoad(){
+  if(t$("._abmMainAdContainer")){
+    return "Ad is Present";
+  } else {
+    return "Ad is Absent"
+  }
+}
 
+setInterval(function(){
 
+  var adLoaded = checkAdLoad();
+  console.log(adLoaded)
+  console.log("HE")
+  var validateAd = new CustomEvent("adLoaded", { "info": adLoaded,"detail":adLoaded});
 
+  window.dispatchEvent(validateAd);
+}, 3000);
 
 
 
 t$(document).ready(function(){
   console.log("Checking the AdInstances.");
-
-  checkAdLoadfunction = function(){
+  window.checkAdLoadfunction = function(){
     if(t$("._abmMainAdContainer")){
       console.log("Ad unit is present");
       t$('div').mouseover(function(){
@@ -34,17 +47,5 @@ t$(document).ready(function(){
         console.log('Hoverred mouse over tera ad unit')
       });
     }
-
-    setInterval(function(){
-
-      var adLoaded = checkAdLoad();
-      console.log("HE")
-      console.log(adLoaded)
-      console.log("HE")
-      var validateAd = new CustomEvent("adLoaded", { "info": adLoaded,"detail":adLoaded});
-
-      window.dispatchEvent(validateAd);
-    }, 3000);
-
   }
 });
