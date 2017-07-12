@@ -16,7 +16,8 @@
 function checkAdLoad(){
   if(t$("._abmMainAdContainer")){
     return "Ad is Present";
-    return document.querySelectorAll('._abmMainAdContainer').length;
+    var l = document.querySelectorAll('._abmMainAdContainer').length;
+    return l
   } else {
     return "Ad is Absent";
   }
