@@ -20,22 +20,20 @@ console.log("Hey "+name);
 function checkAdLoad(){
   if(t$("._abmMainAdContainer")){
     return "Ad is Present";
+    document.querySelectorAll('._abmMainAdContainer').length
   } else {
     return "Ad is Absent"
   }
 }
 
 setInterval(function(){
-
   var adLoaded = checkAdLoad();
-  console.log(adLoaded)
-  console.log("HE")
+  // console.log(adLoaded)
+  // console.log("HE")
   var validateAd = new CustomEvent("adLoaded", { "info": adLoaded,"detail":adLoaded});
 
   window.dispatchEvent(validateAd);
 }, 3000);
-
-
 
 t$(document).ready(function(){
   console.log("Checking the AdInstances.");
