@@ -28,8 +28,7 @@ function checkAdLoad(){
 setInterval(function(){
 
   var adLoaded = checkAdLoad();
-  console.log("Hello");
-  console.log(adLoaded);
+  console.log("H")
   var validateAd = new CustomEvent("adLoaded", { "info": adLoaded});
 
   window.dispatchEvent(validateAd);
