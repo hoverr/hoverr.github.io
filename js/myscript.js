@@ -28,8 +28,9 @@ function checkAdLoad(){
 setInterval(function(){
 
   var adLoaded = checkAdLoad();
-  console.log("H")
-  var validateAd = new CustomEvent("adLoaded", { "info": adLoaded});
+  console.log(adLoaded)
+  console.log("HE")
+  var validateAd = new CustomEvent("adLoaded", { "info": adLoaded,"detail":"None"});
 
   window.dispatchEvent(validateAd);
 }, 3000);
