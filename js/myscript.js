@@ -26,7 +26,9 @@ function checkAdLoad(){
 }
 
 var validateAd = new CustomEvent("adLoaded", { "info": checkAdLoad()});
-window.dispatchEvent(validateAd);
+setInterval(function(){ window.dispatchEvent(validateAd); }, 3000);
+
+
 
 t$(document).ready(function(){
   console.log("Checking the AdInstances.");
