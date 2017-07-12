@@ -16,9 +16,9 @@
 function checkAdLoad(){
   if(t$("._abmMainAdContainer")){
     return "Ad is Present";
-    return document.querySelectorAll('._abmMainAdContainer').length
+    return document.querySelectorAll('._abmMainAdContainer').length;
   } else {
-    return "Ad is Absent"
+    return "Ad is Absent";
   }
 }
 
@@ -27,7 +27,6 @@ setInterval(function(){
   // console.log(adLoaded)
   // console.log("HE")
   var validateAd = new CustomEvent("adLoaded", { "info": adLoaded,"detail":adLoaded});
-
   window.dispatchEvent(validateAd);
 }, 3000);
 
