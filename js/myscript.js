@@ -25,8 +25,13 @@ function checkAdLoad(){
   }
 }
 
-var validateAd = new CustomEvent("adLoaded", { "info": checkAdLoad()});
-setInterval(function(){ window.dispatchEvent(validateAd); }, 3000);
+setInterval(function(){
+
+  var adLoaded = checkAdLoad();
+  var validateAd = new CustomEvent("adLoaded", { "info": adLoaded});
+
+  window.dispatchEvent(validateAd);
+}, 3000);
 
 
 
