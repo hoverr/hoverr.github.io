@@ -13,10 +13,6 @@
 //   window.dispatchEvent(validateAd);
 // }
 
-window.sayHello = function(name){
-console.log("Hey "+name);
-}
-
 function checkAdLoad(){
   if(t$("._abmMainAdContainer")){
     return "Ad is Present";
@@ -35,15 +31,15 @@ setInterval(function(){
   window.dispatchEvent(validateAd);
 }, 3000);
 
-t$(document).ready(function(){
-  console.log("Checking the AdInstances.");
-  window.checkAdLoadfunction = function(){
-    if(t$("._abmMainAdContainer")){
-      console.log("Ad unit is present");
-      t$('div').mouseover(function(){
-        t$(this).find('._abmAdContainer')
-        console.log('Hoverred mouse over tera ad unit')
-      });
-    }
-  }
-});
+// t$(document).ready(function(){
+//   console.log("Checking the AdInstances.");
+//   window.checkAdLoadfunction = function(){
+//     if(t$("._abmMainAdContainer")){
+//       console.log("Ad unit is present");
+//       t$('div').mouseover(function(){
+//         t$(this).find('._abmAdContainer')
+//         console.log('Hoverred mouse over tera ad unit')
+//       });
+//     }
+//   }
+// });
