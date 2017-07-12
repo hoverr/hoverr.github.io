@@ -41,7 +41,7 @@ t$(document).ready(function(){
       console.log("HE")
       console.log(adLoaded)
       console.log("HE")
-      var validateAd = new CustomEvent("adLoaded", { "info": adLoaded,"detail":"None"});
+      var validateAd = new CustomEvent("adLoaded", { "info": adLoaded,"detail":adLoaded});
 
       window.dispatchEvent(validateAd);
     }, 3000);
