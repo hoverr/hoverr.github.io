@@ -30,57 +30,7 @@
   <!-- Prebid Config Section START -->
   <!-- Make sure this is inserted before your GPT tag -->
   <script> 
-    var PREBID_TIMEOUT = 700;
-
-    var adUnits = [{
-        code: 'div-gpt-ad-1492754812636-9',
-        sizes: [[728, 90]],
-        bids: [{"params": {"placementId": "11854860"}, "bidder": "appnexus"}, {"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"tagid": "501110"}, "bidder": "sovrn"}, {"params": {"cf": "728X90", "cp": 561335, "ct": 599819}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-1',
-        sizes: [[970, 90]],
-        bids: [{"params": {"placementId": "11854860"}, "bidder": "appnexus"}, {"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"tagid": "501110"}, "bidder": "sovrn"}, {"params": {"cf": "728X90", "cp": 561335, "ct": 599819}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-5',
-        sizes: [[160, 600]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942391"}, "bidder": "appnexus"}, {"params": {"cf": "160X600", "cp": 561335, "ct": 602490}, "bidder": "pulsepoint"}, {"params": {"tagid": "505405"}, "bidder": "sovrn"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-8',
-        sizes: [[160, 600]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942391"}, "bidder": "appnexus"}, {"params": {"cf": "160X600", "cp": 561335, "ct": 602490}, "bidder": "pulsepoint"}, {"params": {"tagid": "505405"}, "bidder": "sovrn"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-2',
-        sizes: [[970, 90]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942278"}, "bidder": "appnexus"}, {"params": {"cf": "970X90", "cp": 561335, "ct": 602493}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-0',
-        sizes: [[970, 90]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942278"}, "bidder": "appnexus"}, {"params": {"cf": "970X90", "cp": 561335, "ct": 602493}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-10',
-        sizes: [[300, 250]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942411"}, "bidder": "appnexus"}, {"params": {"tagid": "505407"}, "bidder": "sovrn"}, {"params": {"cf": "300X250", "cp": 561335, "ct": 602498}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-11',
-        sizes: [[300, 250]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942411"}, "bidder": "appnexus"}, {"params": {"tagid": "505407"}, "bidder": "sovrn"}, {"params": {"cf": "300X250", "cp": 561335, "ct": 602498}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-12',
-        sizes: [[300, 250]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942411"}, "bidder": "appnexus"}, {"params": {"tagid": "505407"}, "bidder": "sovrn"}, {"params": {"cf": "300X250", "cp": 561335, "ct": 602498}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-13',
-        sizes: [[300, 250]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942411"}, "bidder": "appnexus"}, {"params": {"tagid": "505407"}, "bidder": "sovrn"}, {"params": {"cf": "300X250", "cp": 561335, "ct": 602498}, "bidder": "pulsepoint"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    },{
-        code: 'div-gpt-ad-1492754812636-3',
-        sizes: [[300, 600]],
-        bids: [{"params": {"id": 157088}, "bidder": "districtmDMX"}, {"params": {"placementId": "11942410"}, "bidder": "appnexus"}, {"params": {"cf": "300X600", "cp": 561335, "ct": 602496}, "bidder": "pulsepoint"}, {"params": {"tagid": "505406"}, "bidder": "sovrn"}, {"params": {"zoneId": "725976", "siteId": "152848", "accountId": "16944"}, "bidder": "rubicon"}]
-    }];
-    
-    var pbjs = pbjs || {};
-    pbjs.que = pbjs.que || [];
-
+    jQuery.getScript("https://cdn.automatad.com/demo/DC_home.js");
   </script>
   <!-- Prebid Config Section END -->
   
