@@ -8,9 +8,25 @@
 <!--     <script src="http://cdn.hoverr.me/js/tjquery.min.js" type="text/javascript"></script> -->
     <script src="https://pub.automatad.com/static/created-js/tera_hoverr.js"></script>
     <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function() {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+           '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+    <script>
         googletag.cmd.push(function () {
             googletag.defineSlot('/175265624/ad_unit_name', [300, 250], 'div-gpt-ad-ad-1').addService(googletag.pubads());
             googletag.defineSlot('/175265624/ad_unit_name', [300, 250], 'div-gpt-ad-ad-2').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
         });
 
     </script>
