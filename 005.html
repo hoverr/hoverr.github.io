@@ -28,6 +28,8 @@
           [300, 250]
         ]
         }];
+      
+       
         var pbjs = pbjs || {};
         pbjs.que = pbjs.que || [];
 
@@ -40,14 +42,6 @@
         googletag.pubads().disableInitialLoad();
         });
         pbjs.que.push(function() {
-        pbjs.setPriceGranularity({
-          "buckets": [{
-            "precision": 2,
-            "min": 0,
-            "max": 8,
-            "increment": 0.01
-          }]
-        });
         pbjs.bidderSettings = {
           appnexus: {
             bidCpmAdjustment: function(bidCpm, bid) {
@@ -55,6 +49,18 @@
             }
           }
         };
+              const customGranularity = {
+  'buckets': [{
+      'min': 0,
+      'max': 8,
+      'increment': 0.01
+  }]
+};
+
+pbjs.setConfig({
+    priceGranularity: customGranularity
+});
+            
         pbjs.requestBids({
           adUnits: adUnits,
           bidsBackHandler: sendAdserverRequest,
