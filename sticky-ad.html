@@ -86,5 +86,369 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+(function(){
+	// Declaring some global variable
+	let tjQuery,
+		readyEventHandlersInstalled = false,
+		cdnLink = '//cdn.hoverr.me/js/tjquery.min.js',
+		allAd = [{
+			selector: '#ad-container',
+			stop: '#ad-container1',
+			hasTimer: false
+		},{
+			selector: '#ad-container1',
+			// hasTimer: true,
+			// time: 5000
+		}];
+
+	// Checking the Document is ready for dom manipulation or not
+	const docReady = () => {
+		return new Promise((resolve, reject) => {
+			let readyFired = false;
+
+			const ready = () => {
+				if(!readyFired){ 
+					readyFired = true;
+					resolve(true);
+				}
+			};
+
+			const readyStateChange = () => {
+				if(document.readyState == 'interactive' || document.readyState == 'complete' || document.readyState == 'loaded') resolve(true);
+			};
+
+			// if document already ready to go, schedule the ready function to run
+			if(document.readyState == 'interactive' || document.readyState == 'complete' || document.readyState == 'loaded') resolve(true);
+			else if(!readyEventHandlersInstalled){
+				// Otherwise if we don't have event handlers installed, install them
+				if(document.addEventListener) {
+					document.addEventListener("DOMContentLoaded", ready, false);
+					window.addEventListener("load", ready, false);
+				}
+				else{
+					// must be IE
+					document.attachEvent("onreadystatechange", readyStateChange);
+					window.attachEvent("onload", ready);
+				}
+				readyEventHandlersInstalled = true;
+			}
+		});
+	};
+
+
+	// LoadJs using http link/links
+	// If array of src is passed once all the js is been loaded then the callback will be called
+	//     src: string or Array : from where the js will be loaded
+	const loadJS = (src) => {
+		const createScript = (src) => {
+			return new Promise((resolve, reject) => {
+				let s = document.createElement('script');
+				s.src = src;
+				s.type = "text/javascript";
+
+				s.onreadystatechange = s.onload = function() {
+					let state = s.readyState;
+					if(!state || /loaded|complete/.test(state)) resolve(true);
+				};
+				(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(s);
+			});
+		};
+
+		return new Promise((resolve, reject) => {
+			if(Array.isArray(src)) {
+				let counter = 0,
+					length = src.length;
+				for (let i = 0; i < length; i++) {
+					createScript(src).then(result => {
+						counter++;
+						if(counter == length) resolve(true);
+					});
+				}
+			}
+			else createScript(src).then(result => {
+				resolve(true)
+			});
+		});
+	};
+
+
+	// Create script element and insert it in head or body
+	//      scriptJs: string : script code which will be appended
+	const createScriptElement = (scriptJs) => {
+		let head = document.head || document.getElementsByTagName('head')[0] || document.documentElement,
+			script = document.createElement('script');
+
+		script.type = 'text/javascript';
+		script.appendChild(document.createTextNode(scriptJs));
+		head.appendChild(script);
+	};
+
+
+	// Get element over the internet using http request
+	//     link: string : link from the data will be fetched
+	//     type: string : type of content which will be fetched
+	const httpGet = (link, type) => {
+		return new Promise((resolve, reject) => {
+			let xhr = new XMLHttpRequest();
+			xhr.open("get", link, true);
+			xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+			if(!type) xhr.responseType = "json";
+			xhr.onload = function() {
+				if(xhr.status == 200) resolve(xhr.response);
+				else reject(xhr.status);
+			};
+			xhr.send();
+		});
+	};
+
+
+	// Bind a event to a element
+	//    el: <dom element>
+	//    event: str : type of event : 'click', 'scroll' etc.
+	//    fn: function : the function which will be call once th event triggered
+	const bindEvent = (el, event, fn) => {
+		el.addEventListener ? el.addEventListener(event, fn, false) : el.attachEvent && el.attachEvent('on' + event, fn);
+	};
+
+
+	// Unbind a event to a element
+	//    el: <dom element>
+	//    event: str : type of event : 'click', 'scroll' etc.
+	//    fn: function : the function which will be call once th event triggered
+	const unbindEvent = (el, event, fn) => {
+		el.removeEventListener ? el.removeEventListener(event, fn) : el.detachEvent && el.detachEvent('on' + event, fn);
+	};
+
+
+	// Measure the height of a alement
+	//    el: <dom element>
+	const measureHeight = (el) => {
+		let currentElement = el;
+		if(currentElement.tagName.toLowerCase() == 'script' || currentElement.tagName.toLowerCase() == 'br') currentElement = currentElement.parentNode;
+
+		while(!(currentElement.offsetWidth || currentElement.offsetHeight || currentElement.getClientRects().length) || currentElement.style.display == 'none') currentElement = currentElement.parentNode;
+
+		return currentElement.clientHeight || currentElement.offsetHeight || tjQuery(currentElement).height();
+	};
+
+
+	// Measure the height of a alement
+	//    el: <dom element>
+	const measureWidth = (el) => {
+		let currentElement = el;
+		if (currentElement.tagName.toLowerCase() == 'script' || currentElement.tagName.toLowerCase() == 'br') currentElement = currentElement.parentNode;
+		while (!(currentElement.offsetWidth || currentElement.offsetHeight || currentElement.getClientRects().length) || currentElement.style.display == 'none') currentElement = currentElement.parentNode;
+		return currentElement.clientWidth || currentElement.offsetWidth || tjQuery(currentElement).width();
+	};
+
+
+	// Set attribute in HTML element
+	//     el: <dom element>
+	//     attrs: object : contains all attribute as key and it's attribute value as value 
+	const setAttributes = (el, attrs) => {
+		for(var key in attrs)
+			if (attrs.hasOwnProperty(key)) el.setAttribute(key, attrs[key]);
+	};
+
+
+	// Get the position of the element
+	//    elem: <dom element>
+	const getOffset = (elem) => {
+		let box = { top: 0, left: 0 };
+		if(typeof elem.getBoundingClientRect !== "undefined") box = elem.getBoundingClientRect();
+		return {
+			x: box.left + (window.pageXOffset || document.scrollLeft || 0) - (document.clientLeft || 0),
+			y: box.top + (window.pageYOffset || document.scrollTop || 0) - (document.clientTop || 0)
+		};
+	};
+
+
+	// Find the element in document using selector
+	//    elem: <dom element>
+	//    find: string : selector of the element
+	const getElement = (element, find) => {
+		let findElement = [],
+			isAnd = (find.indexOf('&') > -1),
+			tempElement = [],
+			i, j;
+
+		find = ((find.indexOf('|') > -1) ? find.split('|') : find)
+		find = ((find.indexOf('&') > -1) ? find.split('&') : find)
+
+		if(typeof find === 'string') {
+			try{ 
+				findElement = element.querySelectorAll(find); 
+			}
+			catch (e){ 
+				findElement = tjQuery(element).find(find); 
+			}
+			return findElement;
+		}
+		else if(isAnd){
+			for(i = 0; i < find.length; i++) {
+				tempElement = [];
+				try{
+					tempElement = element.querySelectorAll(find[i]); 
+				} 
+				catch(e){ 
+					tempElement = tjQuery(element).find(find[i]);
+				}
+
+				for(j = 0; j < tempElement.length; j++) findElement.push(tempElement[j]);
+			}
+			return (findElement.length >= find.length) ? findElement : [];
+		}
+		else{
+			for(i = 0; i < find.length; i++) {
+				try{ 
+					findElement = element.querySelectorAll(find[i]); 
+				}
+				catch(e){ 
+					findElement = tjQuery(element).find(find[i]);
+				}
+				if(findElement.length > 0) break;
+			}
+			return findElement;
+		}
+	};
+
+
+	// Create wrapper around the element to keep the position for the element
+	//    element: dom element
+	const makeWrapper = (element) => {
+		element.style.paddingBottom = '10px';
+		return new Promise((resolve, reject) => {
+			let width = measureWidth(element),
+				style = element.currentStyle || window.getComputedStyle(element),
+				height = measureHeight(element),
+				wrapper = document.createElement('div'),
+				cssText = `position:relative;width:${width}px;height:${height}px;margin-bottom:${style.marginBottom};margin-top:${style.marginTop};padding-bottom:${style.paddingBottom};padding-top:${style.paddingTop};background-color:${(style.backgroundColor != 'rgba(0, 0, 0, 0)') ? style.backgroundColor : '#fff'};`,
+				random1 = Math.floor(Math.random() * 100),
+				random2 = Math.floor(Math.random() * 1000),
+				timestamp = Math.floor(Date.now() / 1000);
+
+			element.style.width = `${width}px`;
+			element.style.paddingBottom = '10px';
+			element.style.backgroundColor = (style.backgroundColor != 'rgba(0, 0, 0, 0)') ? style.backgroundColor : '#fff';
+
+			setAttributes(wrapper, {
+				id: `hovad_${timestamp}_${random1 + random2}`,
+				style: cssText 
+			});
+
+			element.parentNode.insertBefore(wrapper, element);
+			wrapper.appendChild(element);
+			resolve(height);
+		});
+	};
+
+
+	// 
+	const makeItWork = (element, stopElement, height) => {
+		let elementPos = getOffset(element),
+			stopPos = undefined,
+			scrollTop;
+
+		const makeSticky = (left) => {
+			if(element.getAttribute('data-post') != 'fixed'){
+				setAttributes(element, {'data-post': 'fixed'});
+				element.style.position = 'fixed';
+				element.style.top = '0px';
+				element.style.left = `${left}px`;
+			}
+		};
+
+		const makeNonSticky = () => {
+			element.style.position = 'relative';
+			element.style.top = 'initial';
+			element.style.left = 'initial';
+			setAttributes(element, {'data-post': 'relative'});
+		};
+
+		bindEvent(window, 'scroll', function(){
+			scrollTop = (document.documentElement.scrollTop || document.body.scrollTop);
+			
+			if(stopElement){
+				stopPos = getOffset(stopElement);
+				if(scrollTop >= elementPos.y && (scrollTop + height) <= stopPos.y) makeSticky(elementPos.x);
+				else if(scrollTop <= elementPos.y) makeNonSticky();
+				else if(element.getAttribute('data-post') != 'absolute'){
+					setAttributes(element, {'data-post': 'absolute'});
+					element.style.top = `${scrollTop - elementPos.y}px`;
+					element.style.left = '0px';
+					element.style.position = 'absolute';
+				}
+			}
+			else{
+				if(!stopPos && scrollTop >= elementPos.y){
+					element.style.position = 'fixed';
+					element.style.top = '0px';
+					element.style.left = `${elementPos.x}px`;
+				}
+				else{
+					element.style.position = 'relative';
+					element.style.top = 'initial';
+					element.style.left = 'initial';
+				}
+			}
+		});
+	};
+
+
+	const init = () => {
+		for(let i=0; i<allAd.length; i++){
+			let element = getElement(document, allAd[i].selector)[0],
+				stopElement = (allAd[i].stop) ? getElement(document, allAd[i].stop)[0] : undefined;
+			
+			makeWrapper(element).then((height) => {
+				makeItWork(element, stopElement, height)
+			});
+			// break;
+		}
+	};
+
+
+	// Checking the jQuery present on the website
+	//   If there is no jQuery or jQuery version is less than 1.4.2
+	//   Put the jQuery in the page
+	//   If localstorage is supported store the code in localstorage
+	if(window.jQuery === undefined || window.jQuery.fn === undefined || window.jQuery.fn.jquery === undefined || parseInt(window.jQuery.fn.jquery.split('.').join('')) <= 142){
+		const docCheck = function(){
+			docReady().then(result => {
+				tjQuery = window.tjQuery || window.t$;
+				init();	
+			});
+		};
+
+		if(typeof(Storage) !== "undefined"){
+			let tscript = localStorage['_hovtjQuery'];
+			// Checking the script is present in localstorage or not
+			if(script){
+				createScriptElement(script);
+				docCheck();
+			}
+			else{
+				httpGet(cdnLink)
+				.then((status, response) => {
+					localStorage.setItem("_hovtjQuery", data);
+					createScriptElement(data);
+					docCheck();
+				})
+				.catch((status) => {
+					console.log(status);
+				});
+			}
+		}
+		else loadJS(cdnLink).then(result => {
+			docCheck();
+		});
+	}
+	else docReady().then(result => {
+		tjQuery = window.jQuery || window.$;
+		init();
+	})
+}());
+		</script>
 	</body>
 </html>
