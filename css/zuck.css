@@ -36,7 +36,7 @@
 @-webkit-keyframes zuckLoading {0% {-webkit-transform: rotate(0deg);transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);transform: rotate(360deg);}}
 @keyframes zuckLoading {0% {-webkit-transform: rotate(0deg);transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);transform: rotate(360deg);}}
 
-#zuck-modal{outline: 0!important;overflow:hidden;position:fixed;background:rgba(0,0,0,0.75);0;z-index:100000;font-size:14px;font-family:inherit;}
+#zuck-modal{z-index:2147483647;outline: 0!important;overflow:hidden;position:fixed;background:rgba(0,0,0,0.75);0;font-size:14px;font-family:inherit;}
 #zuck-modal-content, #zuck-modal-content .story-viewer, #zuck-modal-content .story-viewer > .slides, #zuck-modal-content .story-viewer > .slides > *{width:100vw;height:100%; top: 0; bottom: 0;position: absolute;overflow:hidden;}
 #zuck-modal * {user-select:none;outline: 0;}
 
@@ -90,8 +90,8 @@
 
 #zuck-modal-content .story-viewer .slides .item{display:none;overflow:hidden;background:#000;height: 100vh}
 #zuck-modal-content .story-viewer .slides .item:before{z-index: 4;background: transparent;content:'';position: absolute;left:0;right:0;bottom:0;top:0;}
-/*#zuck-modal-content .story-viewer .slides .item > .media {height:100%;position:absolute;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);margin:auto;}*/
-#zuck-modal-content .story-viewer .slides .item > .media {
+#zuck-modal-content .story-viewer .slides .item > video.media {height:100%;position:absolute;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);margin:auto;}
+#zuck-modal-content .story-viewer .slides .item > div.media {
 	height: 100vh;
     background-size: cover;
     background-position: 50%;

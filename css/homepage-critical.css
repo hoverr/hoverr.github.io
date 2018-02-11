@@ -119,6 +119,7 @@ svg:not(:root) {
     transition: -webkit-transform .3s ease-in-out;
     transition: transform .3s ease-in-out;
     z-index: 5999997;
+    position: relative;
 }
 .nav-bar {
     background-color: #282828;
@@ -252,7 +253,7 @@ svg:not(:root) {
 }
 .marquee+.nav .location-choice, .sponsored-marquee+.nav .location-choice {
     position: absolute;
-    top: 8rem;
+    top: -7rem;
     right: .3125rem;
     padding: 0 .5rem;
     border-radius: 1rem;
@@ -440,5 +441,5 @@ svg:not(:root) {
     margin: 0 auto;
 }
 #stories {
-    padding: 12px 12px 0 12px;
+    padding: 12px;
 }
