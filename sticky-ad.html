@@ -98,8 +98,8 @@
 			hasTimer: false
 		},{
 			selector: '#ad-container1',
-			// hasTimer: true,
-			// time: 5000
+			hasTimer: true,
+			time: 5000
 		}];
 
 	// Checking the Document is ready for dom manipulation or not
@@ -345,7 +345,7 @@
 
 
 	// 
-	const makeItWork = (element, stopElement, height) => {
+	const makeItWork = (element, stopElement, height, hasTimer, time) => {
 		let elementPos = getOffset(element),
 			stopPos = undefined,
 			scrollTop;
@@ -366,7 +366,7 @@
 			setAttributes(element, {'data-post': 'relative'});
 		};
 
-		bindEvent(window, 'scroll', function(){
+		const scrollBind = () => {
 			scrollTop = (document.documentElement.scrollTop || document.body.scrollTop);
 			
 			if(stopElement){
@@ -392,7 +392,16 @@
 					element.style.left = 'initial';
 				}
 			}
-		});
+		}
+
+		bindEvent(window, 'scroll', scrollBind);
+
+		if(hasTimer){
+			window.setTimeout(function(){
+				makeNonSticky();
+				unbindEvent(window.scroll, scrollBind);
+			}, time);
+		}
 	};
 
 
@@ -402,7 +411,7 @@
 				stopElement = (allAd[i].stop) ? getElement(document, allAd[i].stop)[0] : undefined;
 			
 			makeWrapper(element).then((height) => {
-				makeItWork(element, stopElement, height)
+				makeItWork(element, stopElement, height, allAd[i].hasTimer, allAd[i].time)
 			});
 			// break;
 		}
