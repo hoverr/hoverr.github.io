@@ -399,7 +399,7 @@
 		if(hasTimer){
 			window.setTimeout(function(){
 				makeNonSticky();
-				unbindEvent(window.scroll, scrollBind);
+				unbindEvent(window.scroll, 'scroll', scrollBind);
 			}, time);
 		}
 	};
