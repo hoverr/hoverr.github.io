@@ -356,13 +356,6 @@
 				element.style.position = 'fixed';
 				element.style.top = '0px';
 				element.style.left = `${left}px`;
-
-				if(hasTimer){
-					window.setTimeout(() => {
-						makeNonSticky();
-						unbindEvent(window, 'scroll', scrollBind);
-					}, time);
-				}
 			}
 		};
 
@@ -397,6 +390,14 @@
 					element.style.position = 'relative';
 					element.style.top = 'initial';
 					element.style.left = 'initial';
+				}
+
+				console.log(hasTimer);
+				if(hasTimer){
+					window.setTimeout(() => {
+						makeNonSticky();
+						unbindEvent(window, 'scroll', scrollBind);
+					}, time);
 				}
 			}
 		}
