@@ -95,11 +95,13 @@
 		allAd = [{
 			selector: '#ad-container',
 			stop: '#ad-container1',
-			hasTimer: false
+			hasTimer: false,
+			bindEvent: false
 		},{
 			selector: '#ad-container1',
 			hasTimer: true,
-			time: 5000
+			time: 5000,
+			bindEvent: false
 		}];
 
 	// Checking the Document is ready for dom manipulation or not
@@ -345,7 +347,7 @@
 
 
 	// 
-	const makeItWork = (element, stopElement, height, hasTimer, time) => {
+	const makeItWork = (element, stopElement, height, hasTimer, time, bindEvent) => {
 		let elementPos = getOffset(element),
 			stopPos = undefined,
 			scrollTop;
@@ -386,8 +388,9 @@
 					element.style.top = '0px';
 					element.style.left = `${elementPos.x}px`;
 
-					console.log(hasTimer);
-					if(hasTimer){
+					if(hasTimer && bindEvent){
+						console.log(111);
+						bindEvent = true;
 						window.setTimeout(() => {
 							makeNonSticky();
 							unbindEvent(window, 'scroll', scrollBind);
@@ -412,7 +415,7 @@
 				stopElement = (allAd[i].stop) ? getElement(document, allAd[i].stop)[0] : undefined;
 			
 			makeWrapper(element).then((height) => {
-				makeItWork(element, stopElement, height, allAd[i].hasTimer, allAd[i].time)
+				makeItWork(element, stopElement, height, allAd[i].hasTimer, allAd[i].time, allAd[i].bindEvent)
 			});
 			// break;
 		}
