@@ -5,6 +5,7 @@
     <!-- <script src="//pub.automatad.com/static/created-js/tera_hoverr.js" type="text/javascript"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://go.automatad.com/publisher/1.js" type="text/javascript"></script> 
+    <script type="text/javascript" src="https://s.zkcdn.net/ss/123456.js"></script>
     
 <!--     <script src="http://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js" type="text/javascript"></script> -->
 <!--     <script src="http://cdn.hoverr.me/js/tjquery.min.js" type="text/javascript"></script> -->
@@ -40,13 +41,14 @@
             "siteId": "152800",
             "zoneId": "725810"
           }
-        },
-         {
-            bidder: "hoverr",
+        },{
+            bidder: 'automatad',
             params: {
-                  placement: '12345'
+               networkId: '9969',
+               siteId: '12345', //this is provided by ServerBid for your site
+               zoneIds: [123456] //this is provided by ServerBid if needed
             }
-          }],
+        }],
         "sizes": [
           [300, 250]
         ]
