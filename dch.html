@@ -11,7 +11,7 @@ googletag.cmd.push(function(){
 </script>
 <!-- <script type="text/javascript" src="//go.automatad.com/geo/7UhSFF/afihbs.js" async></script> -->
  <script type="text/javascript">
-  'use strict';
+'use strict';
 
 (function (w, d) {
 	// Check the document in interactive mode or ready for DOM manupulation or not
@@ -117,7 +117,7 @@ googletag.cmd.push(function(){
 	loadJS = function loadJS(src) {
 		var s = d.createElement('script');
 		s.src = (useSSL ? 'https:' : 'http:') + src;
-		s.async = true;
+		s.async = false;
 		s.type = "text/javascript";
 
 		(d.getElementsByTagName("head")[0] || d.documentElement).appendChild(s);
