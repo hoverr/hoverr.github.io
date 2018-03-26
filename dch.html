@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <title>Ad test</title>
@@ -6,6 +5,9 @@
 <script>
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
+googletag.cmd.push(function(){
+	googletag.pubads().disableInitialLoad();
+})
 </script>
 <!-- <script type="text/javascript" src="//go.automatad.com/geo/7UhSFF/afihbs.js" async></script> -->
  <script type="text/javascript">
