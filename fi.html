@@ -27,6 +27,10 @@
         googletag.pubads().enableSingleRequest();
         googletag.enableServices();
         });
+        window.setTimeout(function(){
+            console.log('Calling ads');
+            googletag.pubads().refresh();
+        }, 5000);
 
         </script>
 </head>
