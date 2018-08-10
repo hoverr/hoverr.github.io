@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Adzerk Demo</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="story.js" async></script>
+    <script type="text/javascript">
+      nativeAdRequest = function() {
+        var data = JSON.stringify({
+          "placements": [{
+            "divName": "div1",
+            "networkId": 22003,
+            "siteId": 1027907,
+            "adTypes": [5]
+          }],
+        });
+        $.ajax({
+          url: "https://e-23.adzerk.net/api/v2",
+          method: "POST",
+          dataType: 'json',
+          data: data,
+          success: function(data, status, xhr) {
+            console.log(data);
+
+            // record the impression; REQUIRED
+            //console.log("Impression URL: ", data.decisions.div1.impressionUrl, "\n");
+            //$.ajax({url: data.decisions.div1.impressionUrl, method: "GET"});
+
+            // log & display the response
+            //console.log("Adzerk response:", data.decisions.div1);
+            //console.log("Click URL: ", data.decisions.div1.clickUrl);
+            //$("#response").text(JSON.stringify(data.decisions.div1));
+            //$("#div1").replaceWith(data.decisions.div1.contents[0].body);
+            //console.log(JSON.parse(data.decisions.div1.contents[0].body));
+            window.storyInit(JSON.parse(data.decisions.div1.contents[0].body), false, 'body');
+
+          },
+          error: function(data, status, xhr) {
+            console.log("ERROR!!!", data, status)
+          }
+        });
+      };
+
+    </script>
+  </head>
+  <body>
+    <h1>Adzerk  API - JavaScript Request</h1>
+    <p>Press the button to make a Decision ad request, record the impression, and display both the internal JSON and HTML payload of the response.  Also, check timghe console for logs!</p>
+
+    <button type="button" onclick="nativeAdRequest()">Request an Ad</button>
+    <br/>
+    <hr/>
+
+    <h5>Response:</h5>
+    <code id="response">(Nothing yet; please click the button!)</code>
+
+    <h5>HTML:</h5>
+    <div id="div1"><code>(Nothing yet; please click the button!)</code></div>
+
+  </body>
+</html>
