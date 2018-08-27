@@ -893,9 +893,12 @@ var _auto_init = true;
 			console.log(selectedStory.elm.slider.classList);
 			if(nextStoryIndex != -1) console.log(stories[nextStoryIndex].elm.slider.classList);
 
+			console.log(storyIndex, prevStoryIndex, nextStoryIndex);
+
 			for(; k<stories.length; k++){
 				if(k == storyIndex || k == prevStoryIndex || k == nextStoryIndex) continue;
 				stories[k].elm.slider.classList.remove('current', 'next', 'prev');
+				console.log(k);
 			}
 			hideLoader();
 			window.setTimeout(function(){
