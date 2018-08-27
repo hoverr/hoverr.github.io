@@ -1276,9 +1276,9 @@ var _auto_init = true;
 		// 	}, 150);
 		// });
 		bindTouchEvents(containers.clickCont);
-		bindEvent(window, 'hashchange', function(){
-			if(window.location.hash != 'story') stopAndCloseStory();
-		});
+		// bindEvent(window, 'hashchange', function(){
+		// 	if(window.location.hash != 'story') stopAndCloseStory();
+		// });
 	},
 
 	// Initialize the code
