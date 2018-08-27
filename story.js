@@ -1045,6 +1045,7 @@ var _auto_init = true;
 		},
 
 		startPlaying = function(){
+			console.log(selectedStory.elm.slider.classList);
 			var video = selectedStory.elm.vidimg[pageIndex].video;
 			selectedStory.elm.pointer[pageIndex].pointer.classList.remove('seen');
 			selectedStory.elm.pointer[pageIndex].duration.style.display = 'none';
@@ -1057,6 +1058,7 @@ var _auto_init = true;
 					video.play();
 				}
 			});
+			console.log(selectedStory.elm.slider.classList);
 		},
 
 		playStory = function(){
@@ -1068,14 +1070,15 @@ var _auto_init = true;
 			pageIndex = getNotSeenStoryPage(selectedStory);
 
 			if(selectedStory.uniqueID == storyUniqueId && selectedStory.elm.pages.length > 0){
-				console.log(selectedStory.elm.slider);
+				console.log(selectedStory.elm.slider.classList);
 				setPrevNextStory(function(){
-					console.log(selectedStory.elm.slider);
+					console.log(selectedStory.elm.slider.classList);
 					setActivePage(function(){
-						console.log(selectedStory.elm.slider);
+						console.log(selectedStory.elm.slider.classList);
 						containers.fullStoryDiv.classList.add('active');
 						// fullScreen(containers.fullStoryDiv);
 						setTimeout(function() {
+							console.log(selectedStory.elm.slider.classList);
 							startPlaying();
 						});
 					})
@@ -1083,6 +1086,7 @@ var _auto_init = true;
 
 				// Track the tap event on widget
 				pushEventInQueue('widget_tap', {'story_index': storyIndex, 'story_id': selectedStory.uniqueID, 'thumbnail_id': selectedStory.thumbnailId});
+				console.log('-----')
 			}
 		},
 
