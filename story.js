@@ -889,9 +889,9 @@ var _auto_init = true;
 			if(prevStoryIndex != -1) stories[prevStoryIndex].elm.slider.classList.remove('current', 'next');
 			if(nextStoryIndex != -1) stories[nextStoryIndex].elm.slider.classList.remove('current', 'prev');
 
-			console.log(stories[prevStoryIndex].elm.slider.classList);
+			if(prevStoryIndex != -1) console.log(stories[prevStoryIndex].elm.slider.classList);
 			console.log(selectedStory.elm.slider.classList);
-			console.log(stories[nextStoryIndex].elm.slider.classList);
+			if(nextStoryIndex != -1) console.log(stories[nextStoryIndex].elm.slider.classList);
 
 			for(; k<stories.length; k++){
 				if(k == storyIndex || k == prevStoryIndex || k == nextStoryIndex) continue;
