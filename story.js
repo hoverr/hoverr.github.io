@@ -889,16 +889,9 @@ var _auto_init = true;
 			if(prevStoryIndex != -1) stories[prevStoryIndex].elm.slider.classList.remove('current', 'next');
 			if(nextStoryIndex != -1) stories[nextStoryIndex].elm.slider.classList.remove('current', 'prev');
 
-			if(prevStoryIndex != -1) console.log(stories[prevStoryIndex].elm.slider.classList);
-			console.log(selectedStory.elm.slider.classList);
-			if(nextStoryIndex != -1) console.log(stories[nextStoryIndex].elm.slider.classList);
-
-			console.log(storyIndex, prevStoryIndex, nextStoryIndex);
-
 			for(; k<stories.length; k++){
 				if(k == storyIndex || k == prevStoryIndex || k == nextStoryIndex) continue;
 				stories[k].elm.slider.classList.remove('current', 'next', 'prev');
-				console.log(k);
 			}
 			hideLoader();
 			window.setTimeout(function(){
@@ -1075,8 +1068,11 @@ var _auto_init = true;
 			pageIndex = getNotSeenStoryPage(selectedStory);
 
 			if(selectedStory.uniqueID == storyUniqueId && selectedStory.elm.pages.length > 0){
+				console.log(selectedStory.elm.slider);
 				setPrevNextStory(function(){
+					console.log(selectedStory.elm.slider);
 					setActivePage(function(){
+						console.log(selectedStory.elm.slider);
 						containers.fullStoryDiv.classList.add('active');
 						// fullScreen(containers.fullStoryDiv);
 						setTimeout(function() {
