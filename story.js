@@ -1038,14 +1038,13 @@ var _auto_init = true;
 							bindEvent(selectedStory.elm.pointer[l].duration, pfx[k] +'animationend', runNextStory);
 				}
 
-				// window.setTimeout(function(){
+				window.setTimeout(function(){
 					if(callback) callback()
-				// });
+				});
 			});
 		},
 
 		startPlaying = function(){
-			console.log(selectedStory.elm.slider.classList);
 			var video = selectedStory.elm.vidimg[pageIndex].video;
 			selectedStory.elm.pointer[pageIndex].pointer.classList.remove('seen');
 			selectedStory.elm.pointer[pageIndex].duration.style.display = 'none';
@@ -1058,7 +1057,6 @@ var _auto_init = true;
 					video.play();
 				}
 			});
-			console.log(selectedStory.elm.slider.classList);
 		},
 
 		playStory = function(){
@@ -1091,33 +1089,33 @@ var _auto_init = true;
 		},
 
 		stopAndCloseStory = function(swipe){
-			(document.body || document.getElementsByTagName('body')[0]).style.overflow = 'scroll';
-			fullScreen(containers.fullStoryDiv, true);
-			// window.location.hash = '';
-			containers.fullStoryDiv.classList.remove('active');
-			window.setTimeout(function(){
-				pushEventInQueue('dismiss', {'page_id': selectedStory.pages[pageIndex].uniqueID, 'story_id': selectedStory.uniqueID, 'domain_id': domainId});
+			// (document.body || document.getElementsByTagName('body')[0]).style.overflow = 'scroll';
+			// fullScreen(containers.fullStoryDiv, true);
+			// // window.location.hash = '';
+			// containers.fullStoryDiv.classList.remove('active');
+			// window.setTimeout(function(){
+			// 	pushEventInQueue('dismiss', {'page_id': selectedStory.pages[pageIndex].uniqueID, 'story_id': selectedStory.uniqueID, 'domain_id': domainId});
 
-				var video = selectedStory.elm.vidimg[pageIndex].video;
-				if(video && !video.paused){
-					video.pause();
-					video.currentTime = 0;
-				}
+			// 	var video = selectedStory.elm.vidimg[pageIndex].video;
+			// 	if(video && !video.paused){
+			// 		video.pause();
+			// 		video.currentTime = 0;
+			// 	}
 
-				for(var i=0; i<stories.length; i++){
-					stories[i].elm.slider.classList.remove('prev', 'current', 'next');
-					for(var j=0; j<stories[i].pages.length; j++){
-						stories[i].elm.pointer[j].pointer.classList.remove('active', 'seen');
-						stories[i].elm.pointer[j].duration.style.display = 'none';
-					}
-				}
+			// 	for(var i=0; i<stories.length; i++){
+			// 		stories[i].elm.slider.classList.remove('prev', 'current', 'next');
+			// 		for(var j=0; j<stories[i].pages.length; j++){
+			// 			stories[i].elm.pointer[j].pointer.classList.remove('active', 'seen');
+			// 			stories[i].elm.pointer[j].duration.style.display = 'none';
+			// 		}
+			// 	}
 
-				storyIndex = pageIndex = i = 0;
-				storyUniqueId = undefined;
-				selectedStory = {};
-				isMuted = true;
-				longPressRunning = false;
-			}, 300);
+			// 	storyIndex = pageIndex = i = 0;
+			// 	storyUniqueId = undefined;
+			// 	selectedStory = {};
+			// 	isMuted = true;
+			// 	longPressRunning = false;
+			// }, 300);
 		},
 
 		bindTouchEvents = function(elm){
