@@ -1,6 +1,6 @@
 /*
 Created On: 04-06-18
-Last Edited On: 23-08-18
+Last Edited On: 27-08-18
 Version: 0.0.1.2
 */
 'use strict';
@@ -888,6 +888,10 @@ var _auto_init = true;
 			selectedStory.elm.slider.classList.remove('next', 'prev');
 			if(prevStoryIndex != -1) stories[prevStoryIndex].elm.slider.classList.remove('current', 'next');
 			if(nextStoryIndex != -1) stories[nextStoryIndex].elm.slider.classList.remove('current', 'prev');
+
+			console.log(stories[prevStoryIndex].elm.slider.classList);
+			console.log(selectedStory.elm.slider.classList);
+			console.log(stories[nextStoryIndex].elm.slider.classList);
 
 			for(; k<stories.length; k++){
 				if(k == storyIndex || k == prevStoryIndex || k == nextStoryIndex) continue;
