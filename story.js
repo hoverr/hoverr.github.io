@@ -1071,7 +1071,7 @@ var _auto_init = true;
 				setPrevNextStory(function(){
 					setActivePage(function(){
 						containers.fullStoryDiv.classList.add('active');
-						fullScreen(containers.fullStoryDiv);
+						// fullScreen(containers.fullStoryDiv);
 						setTimeout(function() {
 							startPlaying();
 						});
