@@ -16,8 +16,17 @@
     <script>
       var goFS = document.getElementById("goFS");
       goFS.addEventListener("click", function() {
-          var container = document.getElementById("container");
-          container.requestFullscreen();
+          var elem = document.getElementById("container"),
+               func = 'RequestFullScreen',
+			         elFunc = 'requestFullScreen';
+        
+          try{
+            if(elem[elFunc]) elem[elFunc]();
+            else if(elem['ms' + func]) elem['ms' + func]();
+            else if(elem['moz' + func]) elem['moz' + func]();
+            else if(elem['webkit' + func]) elem['webkit' + func]();
+          }
+			catch (e){}
       }, false);
     </script>
   </body>
