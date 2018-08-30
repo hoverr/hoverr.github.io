@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  </head>
+  <body>
+    <div id="container">
+      <video></video>
+      <div>
+        <button>Play</button>
+        <button>Stop</button>
+        <button id="goFS">Go fullscreen</button>
+      </div>
+    </div>
+    <script>
+      var goFS = document.getElementById("goFS");
+      goFS.addEventListener("click", function() {
+          var container = document.getElementById("container");
+          container.requestFullscreen();
+      }, false);
+    </script>
+  </body>
+</html>
