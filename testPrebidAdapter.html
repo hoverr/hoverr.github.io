@@ -9,8 +9,209 @@
 
 <html>
 <head>
-    <script async src="../../HBbuild/dist/prebid.js"></script>
+    <style>
+        .dis-flex{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .col-50{
+            width: 50%;
+            padding:0 10px;
+            margin:0 2px;
+            /* box-shadow: 0 1px 6px -2px rgba(0,0,0,0.4); */
+            border: 1px solid #ececec;
+        }
+        .ms-container{
+  background: transparent url('http://loudev.com/img/switch.png') no-repeat 50% 50%;
+  width: 370px;
+}
+
+.ms-container:after{
+  content: ".";
+  display: block;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  clear: both;
+  min-height: 0;
+  visibility: hidden;
+}
+
+.ms-container .ms-selectable, .ms-container .ms-selection{
+  background: #fff;
+  color: #555555;
+  float: left;
+  width: 45%;
+}
+
+.ms-container .ms-list{
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  position: relative;
+  height: 200px;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.ms-container .ms-selectable{
+  margin-right: 10%;
+}
+
+.ms-container .ms-list.ms-focus{
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  outline: 0;
+  outline: thin dotted \9;
+}
+
+.ms-container ul{
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.ms-container .ms-optgroup-container{
+  width: 100%;
+}
+
+.ms-container .ms-optgroup-label{
+  margin: 0;
+  padding: 5px 0px 0px 5px;
+  cursor: pointer;
+  color: #999;
+}
+
+.ms-container .ms-selectable li.ms-elem-selectable,
+.ms-container .ms-selection li.ms-elem-selection{
+  border-bottom: 1px #eee solid;
+  padding: 2px 10px;
+  color: #555;
+  font-size: 14px;
+}
+
+.ms-container .ms-selectable li.ms-hover,
+.ms-container .ms-selection li.ms-hover{
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  background-color: #08c;
+}
+
+.ms-container .ms-selectable li.disabled,
+.ms-container .ms-selection li.disabled{
+  background-color: #eee;
+  color: #aaa;
+  cursor: text;
+}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>
+    <script async src="../../build/dist/prebid.js"></script>
     <script async src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+        window.selectSize = (localStorage.getItem("size"))?JSON.parse(localStorage.getItem("size")):[]
+        window.siteId = getParameterByName("siteid",window.location.href)
+        window.placementId = getParameterByName("placementid",window.location.href)
+
+        jQuery(document).ready(function($){
+        //     $("#atd-param-config").toggle('hide')
+        // $("#toggleAtd").click(function(){
+        //     $("#atd-param-config").toggle('show')
+        // })
+            if(window.location.search.split('siteid=')[1]){
+                $("#atd-site-id").val(getParameterByName("siteid",window.location.href))
+            }
+            if(window.location.search.split('placementid=')[1]){
+                $("#atd-placement-id").val(getParameterByName("placementid",window.location.href))
+            }
+            var data =
+        [{"id":1,"width":300,"height":250,"active":true},{"id":2,"width":160,"height":600,"active":true},{"id":3,"width":728,"height":90,"active":true},{"id":4,"width":970,"height":90,"active":true},{"id":5,"width":320,"height":50,"active":true},{"id":6,"width":320,"height":100,"active":true},{"id":7,"width":120,"height":600,"active":true},{"id":8,"width":300,"height":600,"active":true},{"id":10,"width":970,"height":250,"active":true},{"id":14,"width":1240,"height":60,"active":false},{"id":15,"width":940,"height":60,"active":false},{"id":16,"width":1200,"height":600,"active":false},{"id":17,"width":300,"height":400,"active":true},{"id":18,"width":640,"height":400,"active":false},{"id":11,"width":336,"height":280,"active":true},{"id":19,"width":350,"height":280,"active":true},{"id":13,"width":468,"height":60,"active":true},{"id":20,"width":350,"height":50,"active":true},{"id":21,"width":300,"height":300,"active":true},{"id":22,"width":320,"height":75,"active":true},{"id":12,"width":200,"height":200,"active":true},{"id":23,"width":254,"height":258,"active":true},{"id":24,"width":974,"height":98,"active":true},{"id":25,"width":164,"height":608,"active":true},{"id":26,"width":540,"height":400,"active":true},{"id":27,"width":640,"height":65,"active":true},{"id":28,"width":320,"height":480,"active":true},{"id":29,"width":250,"height":250,"active":true},{"id":30,"width":960,"height":490,"active":true},{"id":31,"width":970,"height":65,"active":true},{"id":9,"width":1,"height":1,"active":true},{"id":32,"width":374,"height":312,"active":true},{"id":33,"width":580,"height":400,"active":true},{"id":34,"width":345,"height":287,"active":true},{"id":35,"width":300,"height":50,"active":true},{"id":36,"width":88,"height":31,"active":true},{"id":37,"width":1110,"height":280,"active":true},{"id":38,"width":1110,"height":286,"active":true},{"id":39,"width":375,"height":312,"active":true},{"id":40,"width":300,"height":360,"active":true},{"id":41,"width":640,"height":480,"active":true},{"id":42,"width":360,"height":300,"active":true},{"id":43,"width":317,"height":264,"active":true},{"id":44,"width":613,"height":154,"active":true},{"id":45,"width":269,"height":225,"active":true},{"id":46,"width":317,"height":250,"active":true},{"id":47,"width":1200,"height":90,"active":true}]
+
+        // setTimeout(function(){
+            function isItemInArray(array, item) {
+                for (var i = 0; i < array.length; i++) {
+                    // This if statement depends on the format of your array
+                    if (array[i][0] == item[0] && array[i][1] == item[1]) {
+                        return true;   // Found it
+                    }
+                }
+                return false;   // Not found
+            }
+            for(var i=0;i<data.length;i++){
+            var k = data[i]
+            var sel = (isItemInArray(window.selectSize,[k.width,k.height]))?"selected":""
+            var option = "<option "+sel+" value=["+k.width+","+k.height+"]>"+k.width+"x"+k.height+"</option>"
+            $("#atd-size-select").append(option)
+            }
+
+            $('#atd-size-select').multiSelect({
+                'select':window.selectSize,
+                afterSelect: function(value){
+                    window.selectSize.push(JSON.parse(value));
+                    localStorage.setItem("size",JSON.stringify(window.selectSize))
+                },
+                afterDeselect: function(value){
+                    window.selectSize.splice(window.selectSize.indexOf(value),1);
+                    localStorage.setItem("size",window.selectSize)
+                }
+                });
+
+        // },100)
+
+
+            function setUrlParameter(url, key, value) {
+                var parts = url.split("#", 2), anchor = parts.length > 1 ? "#" + parts[1] : '';
+                var query = (url = parts[0]).split("?", 2);
+                if (query.length === 1)
+                    return url + "?" + key + "=" + value + anchor;
+
+                for (var params = query[query.length - 1].split("&"), i = 0; i < params.length; i++)
+                    if (params[i].toLowerCase().startsWith(key.toLowerCase() + "="))
+                    return params[i] = key + "=" + value, query[query.length - 1] = params.join("&"), query.join("?") + anchor;
+
+                return url + "&" + key + "=" + value + anchor
+            }
+            // $('#atd-reload-page').click(function(){
+            //     location.reload();
+            // })
+
+            $("#atd-site-id").on("input",function(){
+                window.siteId = $("#atd-site-id").val()
+                history.pushState(null,'',setUrlParameter(window.location.href,"siteid",$("#atd-site-id").val()))
+            })
+            $("#atd-placement-id").on("input",function(){
+                window.placementId = $("#atd-placement-id").val()
+                history.pushState(null,'',setUrlParameter(window.location.href,"placementid",$("#atd-placement-id").val()))
+            })
+
+            jQuery("#atd-reload-page").click(function(){
+                location.reload();
+            })
+
+
+        })
+    </script>
     <script>
         var FAILSAFE_TIMEOUT = 3300;
         var PREBID_TIMEOUT = 1000;
@@ -19,15 +220,15 @@
             code: 'div-gpt-ad-1576057419460-0',
             mediaTypes: {
                 banner: {
-                    sizes: [[728, 90],[320,100]],
+                    sizes: window.selectSize,
                 },
             },
             // Replace this object to test a new Adapter!
             bids: [{
                 bidder: 'automatad',
                 params: {
-                    siteId: "EfAysc",
-                    placementId: "StN3O3"
+                    siteId: window.siteId,
+                    placementId: window.placementId
                 }
             }]
 
@@ -64,11 +265,6 @@
             }
         });
 
-            pbjs.requestBids({
-                bidsBackHandler: sendAdserverRequest,
-                timeout: PREBID_TIMEOUT
-            });
-        });
 
         function sendAdserverRequest() {
             if (pbjs.adserverRequestSent) return;
@@ -80,30 +276,64 @@
                 });
             });
         }
+        if(window.siteId!=''&&window.placementId!=''&&window.size!=''){
+            pbjs.requestBids({
+                bidsBackHandler: sendAdserverRequest,
+                timeout: PREBID_TIMEOUT
+            });
 
-        setTimeout(function() {
-            sendAdserverRequest();
-        }, FAILSAFE_TIMEOUT);
+            setTimeout(function() {
+                sendAdserverRequest();
+            }, FAILSAFE_TIMEOUT);
+        }
+
+        })
+
 
     </script>
 
     <script>
-        googletag.cmd.push(function () {
-            googletag.defineSlot('/19968336/header-bid-tag-0', [[728, 90],[300,50]], 'div-gpt-ad-1576057419460-0').addService(googletag.pubads());
+        if(window.siteId!=''&&window.placementId!=''&&window.size!=''){
+            googletag.cmd.push(function () {
+                googletag.defineSlot('/19968336/header-bid-tag-0', window.selectSize, 'div-gpt-ad-1576057419460-0').addService(googletag.pubads());
 
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
-        });
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        }
     </script>
 </head>
 
 <body>
+
 <h2>Prebid.js Test</h2>
-<h5>Div-1</h5>
-<div id='div-gpt-ad-1576057419460-0'>
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1576057419460-0'); });
-    </script>
+<div class="dis-flex">
+    <div class="col-50">
+    <!-- <input id="toggleAtd" type="button" value="Add Bid Config"/> -->
+    <div class="config-settings" id="atd-param-config">
+            <h3>Automatad bidder config:</h3>
+            <label for="atd-site-id">SiteId:</label><br>
+            <input type="text" id="atd-site-id"/><br>
+
+            <label for="atd-placement-id">PlacementId:</label><br>
+            <input type="text" id="atd-placement-id"/><br><br>
+
+            <label for="atd-size-select">Sizes:</label><br>
+            <select id='atd-size-select' multiple='multiple'>
+            </select><br><br>
+            <input type="button" id="atd-reload-page" value="Send Request"/>
+    </div>
+    </div>
+    <div class="col-50">
+    <h5>AdUnit</h5>
+        <div style="border:1px solid #333">
+            <div id='div-gpt-ad-1576057419460-0'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1576057419460-0'); });
+                </script>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
