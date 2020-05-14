@@ -174,7 +174,7 @@
                 afterDeselect: function(value){
                     window.selectSize.splice(window.selectSize.indexOf(value),1);
                     if(window.selectSize.length==0){window.selectSize=[]}
-                    localStorage.setItem("size",window.selectSize)
+                    localStorage.setItem("size",JSON.stringify(window.selectSize))
                 }
                 });
 
