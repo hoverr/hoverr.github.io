@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="application/javascript">window.HELP_IMPROVE_VIDEOJS = false;
+    </script>
+    <link href="https://vjs.zencdn.net/7.6.0/video-js.min.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.6.0/video.min.js"></script>
+    <link href="https://cdn.rawgit.com/MailOnline/videojs-vast-vpaid/master/bin/videojs.vast.vpaid.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://googleads.github.io/videojs-ima/node_modules/videojs-contrib-ads/dist/videojs.ads.css" />
+    <link rel="stylesheet" href="https://googleads.github.io/videojs-ima/dist/videojs.ima.css" />
+    <script src="https://cdn.rawgit.com/MailOnline/videojs-vast-vpaid/master/bin/videojs_5.vast.vpaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/6.6.4/videojs.ads.min.js'></script>
+    <script src='https://imasdk.googleapis.com/js/sdkloader/ima3.js'></script>
+    <script src="https://googleads.github.io/videojs-ima/dist/videojs.ima.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+    <style>
+        video {
+            height: 100%;
+            width: 100%;
+            /* position: absolute; */
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+        .dock-player {
+            position:fixed;
+            bottom:10px;
+            right:10px;
+        }
+        .video-js.is-sticky{
+    position: fixed;
+    right: 3px;
+    bottom: 3px;
+    top: auto;
+    left: auto;
+    max-width: 280px;
+    max-height: 158px;
+    width: 280px;
+    height: 158px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="controls-custom">
+        <label>player width:</label><input type="text" id="vid-width"/>
+        <label>player height:</label><input type="text" id="vid-height"/>
+        <button id="update">Update</button>
+    </div>
+    <div class="demo-article">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae viverra dolor, vel sagittis nibh. Quisque
+            imperdiet augue a elementum ultricies. Donec mattis urna et sem porta, ut tempus nulla cursus. Etiam sagittis
+            metus non urna consectetur suscipit. Nunc sit amet porttitor felis, ac rhoncus dolor. Praesent mollis ipsum ut
+            arcu facilisis placerat. Integer id ex eu massa suscipit pellentesque at ut elit. Nulla in elit ac nisl semper
+            tristique id tincidunt libero. Donec sapien mauris, pulvinar ut lectus vel, molestie consequat arcu. Sed egestas
+            eros ac tempus tristique. Sed ac justo cursus, porttitor neque eget, fringilla arcu. Aliquam imperdiet eu tortor
+            nec blandit. Sed ultricies egestas urna, egestas dapibus risus ultrices lacinia.
+        </p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+            <p class="video-append">
+
+                    <a href="javascript:void(0);" class="close-button"></a>
+                    <div class="gradient-overlay"></div>
+                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+            </p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+
+        <p>
+            Praesent aliquet malesuada tincidunt. Nullam vel ullamcorper massa. Vestibulum iaculis ornare libero sed
+            commodo. Fusce gravida imperdiet velit, fermentum mattis ligula malesuada vel. Donec malesuada neque in velit
+            ullamcorper posuere. Phasellus bibendum consectetur euismod. Morbi mattis odio sit amet quam elementum posuere.
+            Nullam convallis dolor sit amet fringilla lobortis. In tristique lorem non ultricies feugiat. Aenean id
+            fermentum quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc ullamcorper lorem ut elit
+            varius rutrum. Sed id ipsum aliquam, aliquam lectus non, condimentum ligula. Aliquam posuere sed lectus nec
+            tempus. Nam condimentum condimentum lacus, in sollicitudin dui tempus vitae. Sed sit amet ultrices nibh, eget
+            accumsan lorem.</p>
+        <p>
+            Aliquam ut sagittis dolor, sit amet cursus nulla. Vestibulum a consectetur felis. Donec finibus nunc quis sem
+            accumsan aliquet. Nulla sapien libero, fringilla sit amet turpis in, blandit volutpat nunc. Duis quis dolor
+            turpis. Nulla facilisi. Donec urna dui, accumsan et molestie malesuada, accumsan quis tellus. Fusce pulvinar
+            aliquet vulputate. Aenean vitae rhoncus urna, id tempor elit.</p>
+        <p>
+            Nam consectetur, risus ullamcorper maximus feugiat, lacus augue condimentum tellus, non tempus arcu justo ut ex.
+            Cras vulputate libero ac tortor mollis mollis. Curabitur laoreet, massa porttitor venenatis cursus, tortor urna
+            ornare velit, eget sollicitudin lorem dui in dolor. Donec non massa at sapien aliquam consequat. Etiam quis
+            mauris sem. Nullam imperdiet, ante sit amet fermentum luctus, neque elit rhoncus libero, quis blandit libero
+            tortor quis felis. Phasellus nunc sapien, interdum eu nisi eget, ullamcorper dignissim lacus. Praesent eleifend
+            sed risus posuere sodales. Suspendisse potenti. Nam sed dictum velit. Morbi nisi ligula, faucibus quis posuere
+            in, tristique quis ex. Integer rhoncus, ante quis vulputate varius, purus nulla rhoncus est, suscipit placerat
+            magna justo quis velit. Integer facilisis cursus lectus. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Vestibulum pharetra elit eget maximus blandit.</p>
+        <p>
+            Sed lacinia mauris at est lacinia rutrum. Praesent quam lacus, egestas sit amet nisi vel, pharetra laoreet
+            neque. In libero leo, commodo at eros nec, lobortis tristique leo. Aliquam vitae porta sapien. Aenean dignissim
+            nisi purus, sed volutpat est eleifend ut. Vivamus vel pulvinar tellus, eget cursus neque. Donec auctor massa
+            neque, vel faucibus leo viverra eget. Mauris sit amet semper tortor, vel lobortis dolor. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Suspendisse egestas vestibulum ligula a convallis. Etiam ut risus est. Sed
+            sed dapibus felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla
+            facilisi.</p>
+
+    </div>
+
+    <script type="application/javascript">
+        var videoList, currentPlayer, closeButton, gradientOverlay, fullScreenIcon;
+        var inViewPortBol = true;
+        var videoTagId = [];
+        var events = new Array("ended", "pause", "playing");
+        document.addEventListener('DOMContentLoaded', function () {
+            /*Getting Video Tag List and Creating instances*/
+            videoList = document.getElementsByTagName("video");
+
+            for (i = 0; i < videoList.length; i++) {
+                videoList[i].id = "my_video_"+i;
+                videoTagId.push("videoPlayerId" + i);
+                videoTagId[i] = document.getElementById(videoList[i].id);
+            }
+
+            for (i = 0; i < videoTagId.length; i++) {
+                for (var j in events) {
+                    videoTagId[i].addEventListener(events[j], videoTagPlayerhandler, false);
+                }
+            }
+            closeButton = document.querySelector("a.close-button");
+        })
+
+
+
+function videoTagPlayerhandler(e) {
+/*Play Rules*/
+for (i = 0; i < videoTagId.length; i++) {
+    if (e.target == videoTagId[i]) {
+        if (e.type == "playing") {
+            currentPlayer = videoTagId[i];
+            console.log(currentPlayer.parentNode)
+            videoTagId[i].parentNode.classList.remove("is-paused");
+            videoTagId[i].parentNode.classList.add("is-playing");
+            break;
+        }
+    }
+}
+
+for (i = 0; i < videoTagId.length; i++) {
+    if (currentPlayer == videoTagId[i]) {
+        continue;
+    }
+    videoTagId[i].parentNode.classList.remove("is-playing");
+    videoTagId[i].parentNode.classList.add("is-paused");
+}
+
+/*Pause Rules*/
+
+for (i = 0; i < videoTagId.length; i++) {
+    if (e.target == videoTagId[i]) {
+        if (e.type == "pause" && !videoTagId[i].parentNode.classList.contains('vjs-ad-playing')) {
+            videoTagId[i].parentNode.classList.add("is-paused");
+            videoTagId[i].parentNode.classList.remove("is-playing");
+            videoTagId[i].pause();
+        }
+    }
+}
+
+
+
+/*Sticky Rules*/
+
+for (i = 0; i < videoTagId.length; i++) {
+    if (videoTagId[i].parentNode.classList.contains("is-sticky")) {
+        // videoTagId[i].pause();
+        // fullScreenIcon.style.display = "none";
+    }
+}
+
+
+/*End Rules*/
+
+for (i = 0; i < videoTagId.length; i++) {
+    if (e.target == videoTagId[i]) {
+        if (e.type == "ended") {
+            videoTagId[i].parentNode.classList.remove("is-playing");
+            videoTagId[i].parentNode.classList.remove("is-paused");
+        }
+    }
+}
+videohandler();
+};
+
+
+
+function onPlayerStateChange(event) {
+/*Pause Rules*/
+
+/*Sticky Rules*/
+
+for (i = 0; i < videoTagId.length; i++) {
+    if (videoTagId[i].parentNode.classList.contains("is-sticky")) {
+        // videoTagId[i].pause();
+    }
+}
+/*End Rule*/
+videohandler();
+}
+
+
+
+function videohandler() {
+if (currentPlayer) {
+
+    // if (closeButton) {
+
+    //     closeButton.addEventListener("click", function (e) {
+    //         if (currentPlayer.classList.contains("is-sticky")) {
+    //             currentPlayer.classList.remove("is-sticky");
+    //             closeFloatVideo();
+
+    //             for (i = 0; i < videoTagId.length; i++) {
+    //                 if (currentPlayer == videoTagId[i]) {
+    //                     videoTagId[i].pause();
+    //                 }
+    //             }
+    //         } else {
+                for (i = 0; i < videoTagId.length; i++) {
+                    if (currentPlayer != videoTagId[i]) {
+                        videoTagId[i].parentNode.classList.remove("is-sticky");
+                        // closeFloatVideo();
+                    }
+                }
+
+    //         }
+
+
+
+    //     });
+
+    // }
+
+}
+
+}
+
+
+
+window.addEventListener('scroll', function () {
+inViewPortBol = inViewPort();
+if (currentPlayer) {
+    if (!inViewPortBol && currentPlayer.parentNode.classList.contains("is-playing")) {
+        for (i = 0; i < videoTagId.length; i++) {
+            if (currentPlayer != videoTagId[i]) {
+                console.log(currentPlayer, videoTagId[id])
+                videoTagId[i].parentNode.classList.remove("is-sticky");
+            }
+        }
+        console.log('hit!')
+        if(!currentPlayer.parentNode.classList.contains("is-sticky")){
+            currentPlayer.parentNode.classList.add("is-sticky");
+        }
+        // openFloatVideo();
+
+    } else {
+        console.log('hit!@3')
+        if (currentPlayer.parentNode.classList.contains("is-sticky")) {
+            currentPlayer.parentNode.classList.remove("is-sticky");
+            // closeFloatVideo();
+        }
+    }
+}
+
+});
+
+
+
+
+
+function inViewPort() {
+if (currentPlayer) {
+    var videoParentLocal = currentPlayer.parentNode.parentNode.getBoundingClientRect();
+    return videoParentLocal.bottom > 0 &&
+        videoParentLocal.right > 0 &&
+        videoParentLocal.left < (window.innerWidth || document.documentElement.clientWidth) &&
+        videoParentLocal.top < (window.innerHeight || document.documentElement.clientHeight);
+}
+}
+
+
+
+// function openFloatVideo() {
+
+// closeButton.style.display = "block";
+
+// gradientOverlay.style.display = "block";
+
+// fullScreenIcon.style.display = "block";
+
+// }
+
+
+
+// function closeFloatVideo() {
+
+// closeButton.style.display = "none";
+
+// gradientOverlay.style.display = "none";
+
+// fullScreenIcon.style.display = "none";
+
+// }
+
+
+
+
+        function isElementVisible(el) {
+            // console.log(el,'elementloaded')
+            var rect = el.getBoundingClientRect(),
+                vWidth = window.innerWidth || doc.documentElement.clientWidth,
+                vHeight = window.innerHeight || doc.documentElement.clientHeight,
+                efp = function (x, y) { return document.elementFromPoint(x, y) };
+
+            // Return false if it's not in the viewport
+            if (rect.right < 0 || rect.bottom < 0
+                || rect.left > vWidth || rect.top > vHeight)
+                return false;
+
+            // Return true if any of its four corners are visible
+
+            return (
+                el.contains(efp(rect.left, rect.top))
+                || el.contains(efp(rect.right, rect.top))
+                || el.contains(efp(rect.right, rect.bottom))
+                || el.contains(efp(rect.left, rect.bottom))
+            );
+
+        }
+        // videojs.autoSetup();
+        let vidWidth=document.querySelector('#vid-width').innerHTML || "640"
+        let vidHeight=document.querySelector('#vid-height').innerHTML || "360"
+
+        console.log(vidHeight, vidWidth)
+        let test_video = document.createElement('video')
+        let vid_container=document.createElement('div')
+        vid_container.setAttribute('id','atd_video_container')
+        test_video.setAttribute("id", "my_video_1");
+        test_video.setAttribute("class", "video-js")
+
+        vid_container.appendChild(test_video)
+
+
+        document.querySelector('#update').addEventListener('click', function() {
+            updateDemo()
+        });
+
+        updateDemo()
+
+        function updateDemo(){
+        let cust_option = {
+            "sources": [{
+                src: 'http://vjs.zencdn.net/v/oceans.mp4',
+                type: 'video/mp4'
+            },
+            {
+                src: 'http://vjs.zencdn.net/v/oceans.webm',
+                type: 'video/webm'
+            }
+            ],
+            "controls": true,
+            "options": true,
+            "preload": "auto",
+            "autoplay": false,
+            "width": vidWidth,
+            "height": vidHeight,
+            "liveui": false,
+            "muted": true,
+            "responsive": true,
+            "poster": "http://vjs.zencdn.net/v/oceans.png",
+            "pictureInPictureToggle":false
+        }
+
+        function requestVASTXML(callback) {
+            //The setTimeout below is to simulate asynchrony
+            setTimeout(function(){
+                callback(null, `<VAST version="2.0" xmlns:xsi="//www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
+  <Ad id="232859236">
+    <InLine>
+      <AdSystem version="2.0">Alex_Vast</AdSystem>
+      <AdTitle></AdTitle>
+      <Description></Description>
+      <Survey></Survey>
+      <Impression id="DART"><![CDATA[//qa.jwplayer.com/~alex/pixel.gif?2]]></Impression>
+      <Creatives>
+        <Creative sequence="1" AdID="">
+          <Linear>
+            <Duration>00:00:30</Duration>
+            <TrackingEvents>
+              <Tracking event="start">//qa.jwplayer.com/~alex/pixel.gif?1</Tracking>
+              <Tracking event="impression">//qa.jwplayer.com/~alex/pixel.gif?2</Tracking>
+              <Tracking event="firstQuartile">//qa.jwplayer.com/~alex/pixel.gif?3</Tracking>
+              <Tracking event="midpoint">//qa.jwplayer.com/~alex/pixel.gif?4</Tracking>
+              <Tracking event="thirdQuartile">//qa.jwplayer.com/~alex/pixel.gif?5</Tracking>
+              <Tracking event="complete">//qa.jwplayer.com/~alex/pixel.gif?6</Tracking>
+              <Tracking event="pause">//qa.jwplayer.com/~alex/pixel.gif?7</Tracking>
+              <Tracking event="mute">//qa.jwplayer.com/~alex/pixel.gif?8</Tracking>
+              <Tracking event="fullscreen">//qa.jwplayer.com/~alex/pixel.gif?9</Tracking>
+            </TrackingEvents>
+            <AdParameters></AdParameters>
+            <VideoClicks>
+              <ClickThrough><![CDATA[//www.jwplayer.com/]]></ClickThrough>
+              <ClickTracking id="Alex"><![CDATA[//qa.jwplayer.com/~alex/pixel.gif?10]]></ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              <MediaFile id="1" delivery="progressive" type="video/mp4" bitrate="0" width="640" height="360"><![CDATA[//content.jwplatform.com/videos/AEhg3fFb-bPwArWA4.mp4]]></MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+        <Creative sequence="1" AdID="">
+          <CompanionAds>
+            <Companion id="1" width="300" height="250">
+              <StaticResource creativeType="image/jpeg"><![CDATA[//qa.jwplayer.com/~alex/post_300X250.jpg]]></StaticResource>
+              <CompanionClickThrough><![CDATA[//www.jwplayer.com/]]></CompanionClickThrough>
+              <AltText></AltText>
+              <AdParameters></AdParameters>
+            </Companion>
+            <Companion id="2" width="728" height="90">
+              <StaticResource creativeType="image/jpeg"><![CDATA[//qa.jwplayer.com/~alex/post_728X90.jpg]]></StaticResource>
+              <CompanionClickThrough><![CDATA[//www.jwplayer.com/]]></CompanionClickThrough>
+              <AltText></AltText>
+              <AdParameters></AdParameters>
+            </Companion>
+          </CompanionAds>
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension type="DART">
+          <AdServingData>
+            <DeliveryData>
+              <GeoData><![CDATA[ct=US&st=NY&ac=212&zp=10021&bw=3&dma=3&city=13275]]></GeoData>
+            </DeliveryData>
+          </AdServingData>
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>`);
+            }, 0);
+        }
+
+
+        document.querySelector('.video-append').appendChild(vid_container)
+        let containerWidth=false
+
+        let player = videojs('my_video_1', cust_option)
+
+        var imaOptions = {
+            id: 'my_video_1',
+            adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?' +
+    'sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&' +
+    'ad_rule=1&impl=s&gdfp_req=1&env=vp&output=xml_vmap1&' +
+    'unviewed_position_start=1&' +
+    'cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&' +
+    'vid=short_onecue&correlator='
+        };
+
+        player.ready( function () {
+            //init
+            console.log(this)
+            if(containerWidth==true){
+                this.width_=this.el_.parentNode.offsetWidth
+            }
+            var sw = false
+            var flagel=false
+            window.onscroll = function (e) {
+                if (!this.ads.isAdPlaying() && this.isReady_ == true && this.hasStarted_ == false && isElementVisible(this.el_)) {
+                    // console.log(isElementVisible(this.el_))
+                    this.muted(true)
+                    this.play()
+                    flagel=true
+                }
+                var doc = document.documentElement;
+                var window_top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0) - 0;
+                var div_top = this.el_.offsetTop;
+                var flag = window_top > div_top
+
+                // console.log(sw)
+                if (flagel && sw!=sw) {
+                    if (!this.el_.classList.contains('dock-player')) {
+                        this.el_.classList.add('dock-player');
+                        sw=true
+                    }
+                } else {
+                    if(sw==false ){
+                        // console.log('!')
+                        this.el_.classList.remove('dock-player');
+                    }
+                }
+                this.one('vast.adEnd', function() {this.muted(true)})
+                // if(isElementVisible(this.el_.parentNode)){
+                //     this.el_.classList.add('dock-player')
+                // }else{
+                //     this.el_.classList.remove('dock-player')
+                // }
+
+            }.bind(this)
+
+
+
+            // this.on('timeupdate', function(){
+            //     var currentTime = this.currentTime();
+            //     console.log(currentTime)
+            //     if(Math.round(currentTime)===10){
+            //         // if (!this.vast.isEnabled()) {
+            //         //     this.vast.enable();
+            //         // } else {
+            //         //     this.vast.disable();
+            //         // }
+            //         console.info('Trigger your code here');
+            //     }
+
+            // })
+
+        })
+
+        player.ima(imaOptions);
+        }
+
+    </script>
+
+</body>
+
+</html>
