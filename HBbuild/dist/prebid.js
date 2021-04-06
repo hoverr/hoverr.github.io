@@ -11453,8 +11453,9 @@ atdpbjsChunk([29], {
                         } catch (e) {
                             A.logError("error creating native request: " + String(e))
                         }
+                    console.log(U,"oeeooe")
                     var s = r.bids.reduce(function(e, t) {
-                        console.log(U,"oeeooe")
+                    
                         var r = y.default.bidderRegistry[t.bidder];
                         return r && r.getSpec().transformBidParams && (t.params = r.getSpec().transformBidParams(t.params, !0)),
                         e[t.bidder] = U.adapterOptions && U.adapterOptions[t.bidder] ? T({}, t.params, U.adapterOptions[t.bidder]) : t.params,
