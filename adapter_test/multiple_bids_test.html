@@ -221,11 +221,12 @@
         var FAILSAFE_TIMEOUT = 5020;
         var PREBID_TIMEOUT = 4010;
 
-        var adUnits = [{
-            code: 'div-gpt-ad-1576057419460-0',
+        var adUnits = [
+            {
+            code: '/19968336/header-bid-tag-0',
             mediaTypes: {
                 banner: {
-                    sizes: [[300,250],[160,600]],
+                    sizes: window.selectSize,
                 },
             },
             // Replace this object to test a new Adapter!
@@ -233,252 +234,253 @@
                 bidder: 'automatad',
                 params: {
                     siteId: window.siteId,
-                    placementId: window.placementId
+                    placementId: 'atd_123'
                 }
             }]
+        },
+        // , {
+        //         code: 'div-gpt-ad-1576057419461-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: window.placementId
+        //             }
+        //         }]
 
-        }, {
-                code: 'div-gpt-ad-1576057419461-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: window.placementId
-                    }
-                }]
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419462-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: window.placementId
+        //             }
+        //         }]
 
-            }, {
-                code: 'div-gpt-ad-1576057419462-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: window.placementId
-                    }
-                }]
+        //     },
+        //     {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
 
-            },
+        //     },  {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "16de00ee13796d3"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419463-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: "PRqj1y"
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419464-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: window.placementId
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419465-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: window.placementId
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419466-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: window.placementId
+        //             }
+        //         }]
+
+        //     }, {
+        //         code: 'div-gpt-ad-1576057419467-0',
+        //         mediaTypes: {
+        //             banner: {
+        //                 sizes: window.selectSize,
+        //             },
+        //         },
+        //         // Replace this object to test a new Adapter!
+        //         bids: [{
+        //             bidder: 'automatad',
+        //             params: {
+        //                 siteId: window.siteId,
+        //                 placementId: window.placementId
+        //             }
+        //         }]
+
+        //     }, 
             {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            },  {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "16de00ee13796d3"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419463-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: "PRqj1y"
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419464-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: window.placementId
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419465-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: window.placementId
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419466-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: window.placementId
-                    }
-                }]
-
-            }, {
-                code: 'div-gpt-ad-1576057419467-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: window.siteId,
-                        placementId: window.placementId
-                    }
-                }]
-
-            }, {
                 code: '/175265624/atmtd_test_ad',
                 mediaTypes: {
                     banner: {
@@ -494,23 +496,25 @@
                     }
                 }]
 
-            }, {
-                code: 'div-gpt-ad-1576057419481-0',
-                mediaTypes: {
-                    banner: {
-                        sizes: window.selectSize,
-                    },
-                },
-                // Replace this object to test a new Adapter!
-                bids: [{
-                    bidder: 'automatad',
-                    params: {
-                        siteId: "ppp",
-                        placementId: "000"
-                    }
-                }]
+            }
+            // ,{
+            //     code: 'div-gpt-ad-1576057419481-0',
+            //     mediaTypes: {
+            //         banner: {
+            //             sizes: window.selectSize,
+            //         },
+            //     },
+            //     // Replace this object to test a new Adapter!
+            //     bids: [{
+            //         bidder: 'automatad',
+            //         params: {
+            //             siteId: "ppp",
+            //             placementId: "000"
+            //         }
+            //     }]
 
-            }];
+            // }
+        ];
 
         var pbjs = pbjs || {};
         pbjs.que = pbjs.que || [];
@@ -576,13 +580,13 @@
         if (window.siteId != '' && window.placementId != '' && window.size != '') {
     
             googletag.cmd.push(function () {
-                for(var i=0;i<=30;i++){
-                    googletag.defineSlot('/19968336/header-bid-tag-'+i, window.selectSize, 'div-gpt-ad-15760574194'+parseInt(30)+parseInt(i)+'-0').addService(googletag.pubads());
-                }
+                // for(var i=0;i<=30;i++){
+                //     googletag.defineSlot('/19968336/header-bid-tag-'+i, window.selectSize, 'div-gpt-ad-15760574194'+parseInt(30)+parseInt(i)+'-0').addService(googletag.pubads());
+                // }
                 googletag.defineSlot('/175265624/atmtd_test_ad', window.selectSize, 'div-gpt-ad-1576057419480-0').addService(googletag.pubads());
-                googletag.defineSlot('/19968336/header-bid-tag-1', window.selectSize, 'div-gpt-ad-1576057419461-0').addService(googletag.pubads());
-                googletag.defineSlot('/19968336/header-bid-tag-2', window.selectSize, 'div-gpt-ad-1576057419462-0').addService(googletag.pubads());
-                googletag.defineSlot('/19968336/header-bid-tag-3', window.selectSize, 'div-gpt-ad-1576057419463-0').addService(googletag.pubads());
+                googletag.defineSlot('/19968336/header-bid-tag-0', window.selectSize, 'div-gpt-ad-1576057419461-0').addService(googletag.pubads());
+                // googletag.defineSlot('/19968336/header-bid-tag-2', window.selectSize, 'div-gpt-ad-1576057419462-0').addService(googletag.pubads());
+                // googletag.defineSlot('/19968336/header-bid-tag-3', window.selectSize, 'div-gpt-ad-1576057419463-0').addService(googletag.pubads());
 
                 googletag.pubads().enableSingleRequest();
                 googletag.enableServices();
@@ -619,12 +623,12 @@
                         googletag.cmd.push(function () { googletag.display('div-gpt-ad-1576057419480-0'); });
                     </script>
                 </div>
-                <div id='div-gpt-ad-1576057419463-0'>
+                <div id='div-gpt-ad-1576057419461-0'>
                     <script type='text/javascript'>
-                        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1576057419463-0'); });
+                        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1576057419461-0'); });
                     </script>
                 </div>
-                <div id='div-gpt-ad-1576057419461-0'>
+                <!-- <div id='div-gpt-ad-1576057419461-0'>
                     <script type='text/javascript'>
                         googletag.cmd.push(function () { googletag.display('div-gpt-ad-1576057419461-0'); });
                     </script>
@@ -633,7 +637,7 @@
                     <script type='text/javascript'>
                         googletag.cmd.push(function () { googletag.display('div-gpt-ad-1576057419462-0'); });
                     </script>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
