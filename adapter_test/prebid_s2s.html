@@ -1,7 +1,7 @@
 <html>
 <head>
 <script>
-    var PREBID_TIMEOUT = 3000;
+    var PREBID_TIMEOUT = 4500;
 
     var googletag = googletag || {};
     googletag.cmd = googletag.cmd || [];
@@ -28,7 +28,7 @@
         var pbjsEl = document.createElement("script");
         pbjsEl.type = "text/javascript";
         pbjsEl.async = true;
-        pbjsEl.src = '/build/dev/prebid.js';
+        pbjsEl.src = 'prebid_s2s.js';
         var pbjsTargetEl = document.getElementsByTagName("head")[0];
         pbjsTargetEl.insertBefore(pbjsEl, pbjsTargetEl.firstChild);
       })();
@@ -77,7 +77,7 @@
 
 <script>
     googletag.cmd.push(function() {
-        var rightSlot = googletag.defineSlot('/19968336/header-bid-tag-0', [[300, 250]], 'div-gpt-ad-1460505748561-0').addService(googletag.pubads());
+        var rightSlot = googletag.defineSlot('/175265624/atmtd_test_ad', [[300, 250]], 'div-gpt-ad-1460505748561-0').addService(googletag.pubads());
 
         pbjs.que.push(function() {
             pbjs.setTargetingForGPTAsync();
