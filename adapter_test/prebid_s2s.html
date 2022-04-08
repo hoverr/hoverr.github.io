@@ -54,7 +54,7 @@
             code: 'div-gpt-ad-1460505748561-1',
             mediaTypes: {
               banner: {
-                sizes: [[300, 250]]
+                sizes: [[300, 50]]
               } 
             },
             bids: [
@@ -93,6 +93,7 @@
 <script>
     googletag.cmd.push(function() {
         var rightSlot = googletag.defineSlot('/175265624/atmtd_test_ad', [[300, 250]], 'div-gpt-ad-1460505748561-0').addService(googletag.pubads());
+        var rightSlot1 = googletag.defineSlot('/175265624/atmtd_test_ad', [[300, 50]], 'div-gpt-ad-1460505748561-1').addService(googletag.pubads());
 
         pbjs.que.push(function() {
             pbjs.setTargetingForGPTAsync();
