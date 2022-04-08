@@ -64,9 +64,8 @@
             accountId : '1',
             endpoint: 'http://localhost:8000/openrtb2/auction',
             enabled : true, //default value set to false
-            defaultVendor: 'automatad',
             bidders : ['automatad'],
-            timeout : 1000, //default value is 1000
+            timeout : PREBID_TIMEOUT, //default value is 1000
             adapter : 'prebidServer', //if we have any other s2s adapter, default value is s2s
           }
         });
